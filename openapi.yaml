@@ -1,0 +1,658 @@
+openapi: 3.0.3
+info:
+  title: Tagmine
+  description: |-
+    API for Tagmine.
+    
+    Use this to interact with content, tags, communities, and comments.
+
+    Join our [Discord](https://discord.gg/6kvy54QEg).
+
+  version: 0.0.1
+servers:
+  - url: "https://rg7zweii14.execute-api.us-east-1.amazonaws.com/dev"
+  - url: "http://localhost:8080/dev"
+tags:
+  - name: auth
+  - name: metadata
+  - name: content
+  - name: tags
+  - name: community
+  - name: comments
+  - name: websocket
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+paths:
+  /url_metadata:
+    get:
+      tags:
+        - metadata
+      security:
+        - bearerAuth: []
+      summary: Get title/thumbnail from URL
+      parameters:
+        - name: url
+          in: query
+          description: URL of link
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+  /content:
+    get:
+      tags:
+        - content
+      summary: List content
+      parameters:
+        - name: community_id
+          in: query
+          description: ID of community
+          schema:
+            type: integer
+            format: int64
+        - name: tag_id
+          in: query
+          description: ID of tag
+          schema:
+            type: integer
+            format: int64
+        - name: text
+          in: query
+          description: Text to search for
+          schema:
+            type: string
+        - name: offset
+          in: query
+          description: The number of items to skip
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful operation
+    post:
+      tags:
+        - content
+      security:
+        - bearerAuth: []
+      summary: Add content
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                title:
+                  description: Title of the post
+                  type: string
+                description:
+                  description: Description of the post
+                  type: string
+                url:
+                  description: URL of post
+                  type: string
+                thumbnail:
+                  description: Thumbnail of post
+                  type: string
+                tags:
+                  description: One or more tag IDs
+                  type: array
+                  items:
+                    type: integer
+                community:
+                  description: One or more community IDs
+                  type: array
+                  items:
+                    type: integer
+              required:
+                - title
+      responses:
+        '200':
+          description: Successful operation
+  /content/{id}:
+    get:
+      tags:
+        - content
+      summary: Get content by ID
+      parameters:
+        - name: id
+          in: path
+          description: ID of content
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful operation
+    put:
+      tags:
+        - content
+      security:
+        - bearerAuth: []
+      summary: Update content
+      parameters:
+        - name: id
+          in: path
+          description: ID of content
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                removed_tags:
+                  description: One or more removed tag IDs
+                  type: array
+                  items:
+                    type: integer
+                removed_community:
+                  description: One or more removed community IDs
+                  type: array
+                  items:
+                    type: integer
+                added_tags:
+                  description: One or more added tag IDs
+                  type: array
+                  items:
+                    type: integer
+                added_community:
+                  description: One or more added community IDs
+                  type: array
+                  items:
+                    type: integer
+      responses:
+        '200':
+          description: Successful operation
+    delete:
+      tags:
+        - content
+      security:
+        - bearerAuth: []
+      summary: Delete content
+      parameters:
+        - name: id
+          in: path
+          description: ID of content
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful operation
+  /tag:
+    get:
+      tags:
+        - tags
+      summary: Get tags
+      parameters:
+        - name: text
+          in: query
+          description: Text to search for
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+    post:
+      tags:
+        - tags
+      security:
+        - bearerAuth: []
+      summary: Add tag
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  description: Name of tag
+                  type: string
+              required:
+                - name
+      responses:
+        '200':
+          description: Successful operation
+  /tag/{id}:
+    get:
+      tags:
+        - tags
+      summary: Get tag by ID
+      parameters:
+        - name: id
+          in: path
+          description: ID of content
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful operation
+    delete:
+      tags:
+        - tags
+      security:
+        - bearerAuth: []
+      summary: Delete tag
+      parameters:
+        - name: id
+          in: path
+          description: ID of tag
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful operation
+  /community:
+    get:
+      tags:
+        - community
+      summary: Get communities
+      parameters:
+        - name: text
+          in: query
+          description: Text to search for
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+    post:
+      tags:
+        - community
+      security:
+        - bearerAuth: []
+      summary: Add community
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  description: Name of community
+                  type: string
+                description:
+                  description: Description of community
+                  type: string
+              required:
+                - name
+                - description
+      responses:
+        '200':
+          description: Successful operation
+  /community/{id}:
+    get:
+      tags:
+        - community
+      summary: Get community by ID
+      parameters:
+        - name: id
+          in: path
+          description: ID of community
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful operation
+    put:
+      tags:
+        - community
+      security:
+        - bearerAuth: []
+      summary: Update community
+      parameters:
+        - name: id
+          in: path
+          description: ID of community
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                description:
+                  description: Description of community
+                  type: string
+              required:
+                - description
+      responses:
+        '200':
+          description: Successful operation
+    delete:
+      tags:
+        - community
+      security:
+        - bearerAuth: []
+      summary: Delete community
+      parameters:
+        - name: id
+          in: path
+          description: ID of community
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful operation
+  /comments:
+    get:
+      tags:
+        - comments
+      summary: Get comments
+      parameters:
+        - name: community_id
+          in: query
+          description: ID of community
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: content_id
+          in: query
+          description: ID of content
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful operation
+    post:
+      tags:
+        - comments
+      security:
+        - bearerAuth: []
+      summary: Add comment
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                community_id:
+                  description: ID of community
+                  type: integer
+                content_id:
+                  description: ID of content
+                  type: integer
+                text:
+                  description: Comment text
+                  type: string
+                parent_id:
+                  description: ID of parent comment
+                  type: integer
+              required:
+                - community_id
+                - content_id
+                - text
+      responses:
+        '200':
+          description: Successful operation
+  /comments/{id}:
+    put:
+      tags:
+        - comments
+      security:
+        - bearerAuth: []
+      summary: Update comment
+      parameters:
+        - name: id
+          in: path
+          description: ID of comment
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                text:
+                  description: Comment text
+                  type: string
+              required:
+                - text
+      responses:
+        '200':
+          description: Successful operation
+    delete:
+      tags:
+        - comments
+      security:
+        - bearerAuth: []
+      summary: Delete comment
+      parameters:
+        - name: id
+          in: path
+          description: ID of comment
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful operation
+  /auth/register:
+    post:
+      tags:
+        - auth
+      summary: Register new account
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                username:
+                  description: Username
+                  type: string
+                email:
+                  description: E-mail
+                  type: string
+                password:
+                  description: Password
+                  type: string
+              required:
+                - username
+                - email
+                - password
+      responses:
+        '200':
+          description: Successful operation
+  /auth/login:
+    post:
+      tags:
+        - auth
+      summary: Login to account
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                username:
+                  description: Username
+                  type: string
+                password:
+                  description: Password
+                  type: string
+              required:
+                - username
+                - password
+      responses:
+        '200':
+          description: Successful operation
+  /auth/forgot_password:
+    get:
+      tags:
+        - auth
+      summary: Forgot password
+      parameters:
+        - name: email
+          in: query
+          description: E-mail address of user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+  /auth/reset_password:
+    get:
+      tags:
+        - auth
+      summary: Reset password
+      parameters:
+        - name: token
+          in: query
+          description: Token from forgot password
+          required: true
+          schema:
+            type: string
+        - name: password
+          in: query
+          description: New password
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+  /user/subscribe:
+    post:
+      tags:
+        - user
+      security:
+        - bearerAuth: []
+      summary: Subscribe to a community or tag.
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                community_id:
+                  description: ID of community
+                  type: integer
+                tag_id:
+                  description: ID of tag
+                  type: integer
+      responses:
+        '200':
+          description: Successful operation
+  /user/feed:
+    get:
+      tags:
+        - user
+      security:
+        - bearerAuth: []
+      summary: Retrieve posts from subscribed to tags and communities.
+      parameters:
+        - name: offset
+          in: query
+          description: The number of items to skip
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful operation
+  /user/notifications:
+    head:
+      tags:
+        - user
+      summary: Get the number of user notifications
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful operation
+          headers:
+            X-Notification-Count:
+              description: Number of notifications for given user ID.
+              schema:
+                type: string
+    get:
+      tags:
+        - user
+      summary: Get user notifications
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: offset
+          in: query
+          description: The number of items to skip
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful operation
+  /user/{id}/posts:
+    get:
+      tags:
+        - user
+      summary: Get posts by user ID.
+      parameters:
+        - name: id
+          in: path
+          description: ID of user
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: offset
+          in: query
+          description: The number of items to skip
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful operation
+  /user/{id}/comments:
+    get:
+      tags:
+        - user
+      summary: Get comments by user ID.
+      parameters:
+        - name: id
+          in: path
+          description: ID of user
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: offset
+          in: query
+          description: The number of items to skip
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful operation
