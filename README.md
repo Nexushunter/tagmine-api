@@ -1,2 +1,7 @@
-A sample command-line application with an entrypoint in `bin/`, library code
-in `lib/`, and example unit test in `test/`.
+# Tagmine API
+
+This repo contains the OAS spec for [Tagmine](https://api.tagmine.ca). 
+
+## Clients
+
+- [Dart](clients/dart/README.md)
