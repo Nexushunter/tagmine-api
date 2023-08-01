@@ -21,6 +21,20 @@ tags:
   - name: comments
   - name: websocket
 components:
+  schemas:
+    authLoginResponse:
+      type: object
+      properties:
+        token:
+          type: string
+          format: base64
+          description: Current Session Token for the User
+    userRegisterResponse:
+      type: object
+      properties:
+        id:
+          type: number
+          description: Newly created User ID
   securitySchemes:
     bearerAuth:
       type: http
@@ -483,6 +497,10 @@ paths:
       responses:
         '200':
           description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userRegisterResponse'
   /auth/login:
     post:
       tags:
@@ -506,6 +524,10 @@ paths:
       responses:
         '200':
           description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/authLoginResponse'
   /auth/forgot_password:
     get:
       tags:
