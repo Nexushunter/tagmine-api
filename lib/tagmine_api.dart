@@ -4,6 +4,7 @@ import 'package:openapi_generator_annotations/openapi_generator_annotations.dart
   additionalProperties: DioProperties(
       pubName: 'tagmine_api_client',
       pubDescription: 'OAS generated dart api for tagmine.ca',
+      pubHomepage: 'https://github.com/Nexushunter/tagmine-api/tree/main/clients/dart',
       useEnumExtension: true,
       sortParamsByRequiredFlag: true,
       sortModelPropertiesByRequiredFlag: true,
@@ -12,7 +13,7 @@ import 'package:openapi_generator_annotations/openapi_generator_annotations.dart
   inputSpecFile: './openapi.yaml',
   generatorName: Generator.dio,
   outputDirectory: 'clients/dart',
-  overwriteExistingFiles: false,
+  overwriteExistingFiles: true,
   alwaysRun: true,
   fetchDependencies: true,
 )

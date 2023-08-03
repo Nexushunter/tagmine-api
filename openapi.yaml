@@ -5,7 +5,7 @@ info:
     API for Tagmine.
     
     Use this to interact with content, tags, communities, and comments.
-
+    
     Join our [Discord](https://discord.gg/6kvy54QEg).
 
   version: 0.0.1
@@ -23,18 +23,55 @@ tags:
 components:
   schemas:
     authLoginResponse:
-      type: object
-      properties:
-        token:
-          type: string
-          format: base64
-          description: Current Session Token for the User
+      description: Authentication response
+      type: string
     userRegisterResponse:
+      description: User registration response
       type: object
       properties:
         id:
           type: number
           description: Newly created User ID
+    community:
+      description: A user community
+      type: object
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+        num_comments:
+          type: number
+    tag:
+      description: A content tag
+      type: object
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+    content:
+      description: Content Entry
+      type: object
+      properties:
+        id:
+          type: number
+        title:
+          type: string
+        url:
+          type: string
+        user_id:
+          type: string
+        username:
+          type: string
+        communities:
+          type: array
+          items:
+            $ref: "#/components/schemas/community"
+        tags:
+          type: array
+          items:
+            $ref: "#/components/schemas/tag"
   securitySchemes:
     bearerAuth:
       type: http
@@ -56,7 +93,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Successful operation
   /content:
     get:
@@ -88,8 +125,14 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/content"
     post:
       tags:
         - content
@@ -127,7 +170,7 @@ paths:
               required:
                 - title
       responses:
-        '200':
+        "200":
           description: Successful operation
   /content/{id}:
     get:
@@ -143,7 +186,7 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful operation
     put:
       tags:
@@ -186,7 +229,7 @@ paths:
                   items:
                     type: integer
       responses:
-        '200':
+        "200":
           description: Successful operation
     delete:
       tags:
@@ -203,7 +246,7 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful operation
   /tag:
     get:
@@ -217,7 +260,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Successful operation
     post:
       tags:
@@ -237,7 +280,7 @@ paths:
               required:
                 - name
       responses:
-        '200':
+        "200":
           description: Successful operation
   /tag/{id}:
     get:
@@ -253,7 +296,7 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful operation
     delete:
       tags:
@@ -270,7 +313,7 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful operation
   /community:
     get:
@@ -284,7 +327,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Successful operation
     post:
       tags:
@@ -308,7 +351,7 @@ paths:
                 - name
                 - description
       responses:
-        '200':
+        "200":
           description: Successful operation
   /community/{id}:
     get:
@@ -324,7 +367,7 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful operation
     put:
       tags:
@@ -352,7 +395,7 @@ paths:
               required:
                 - description
       responses:
-        '200':
+        "200":
           description: Successful operation
     delete:
       tags:
@@ -369,7 +412,7 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful operation
   /comments:
     get:
@@ -391,7 +434,7 @@ paths:
           schema:
             type: integer
       responses:
-        '200':
+        "200":
           description: Successful operation
     post:
       tags:
@@ -422,7 +465,7 @@ paths:
                 - content_id
                 - text
       responses:
-        '200':
+        "200":
           description: Successful operation
   /comments/{id}:
     put:
@@ -451,7 +494,7 @@ paths:
               required:
                 - text
       responses:
-        '200':
+        "200":
           description: Successful operation
     delete:
       tags:
@@ -468,7 +511,7 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful operation
   /auth/register:
     post:
@@ -495,12 +538,12 @@ paths:
                 - email
                 - password
       responses:
-        '200':
+        "200":
           description: Successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/userRegisterResponse'
+                $ref: "#/components/schemas/userRegisterResponse"
   /auth/login:
     post:
       tags:
@@ -522,12 +565,12 @@ paths:
                 - username
                 - password
       responses:
-        '200':
+        "200":
           description: Successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/authLoginResponse'
+                $ref: "#/components/schemas/authLoginResponse"
   /auth/forgot_password:
     get:
       tags:
@@ -541,7 +584,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Successful operation
   /auth/reset_password:
     get:
@@ -562,7 +605,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Successful operation
   /user/subscribe:
     post:
@@ -584,7 +627,7 @@ paths:
                   description: ID of tag
                   type: integer
       responses:
-        '200':
+        "200":
           description: Successful operation
   /user/feed:
     get:
@@ -601,7 +644,7 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful operation
   /user/notifications:
     head:
@@ -611,7 +654,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        '200':
+        "200":
           description: Successful operation
           headers:
             X-Notification-Count:
@@ -632,7 +675,7 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful operation
   /user/{id}/posts:
     get:
@@ -654,7 +697,7 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful operation
   /user/{id}/comments:
     get:
@@ -676,5 +719,5 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful operation

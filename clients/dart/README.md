@@ -100,6 +100,10 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [Community](doc/Community.md)
+ - [Content](doc/Content.md)
+ - [Tag](doc/Tag.md)
+ - [UserRegisterResponse](doc/UserRegisterResponse.md)
 
 
 ## Documentation For Authorization

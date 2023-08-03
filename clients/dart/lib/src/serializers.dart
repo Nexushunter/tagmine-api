@@ -14,15 +14,27 @@ import 'package:built_value/iso_8601_date_time_serializer.dart';
 import 'package:tagmine_api_client/src/date_serializer.dart';
 import 'package:tagmine_api_client/src/model/date.dart';
 
+import 'package:tagmine_api_client/src/model/community.dart';
+import 'package:tagmine_api_client/src/model/content.dart';
+import 'package:tagmine_api_client/src/model/tag.dart';
+import 'package:tagmine_api_client/src/model/user_register_response.dart';
 
 part 'serializers.g.dart';
 
 @SerializersFor([
+  Community,
+  Content,
+  Tag,
+  UserRegisterResponse,
 ])
 Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
         const FullType(BuiltList, [FullType(int)]),
         () => ListBuilder<int>(),
+      )
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(Content)]),
+        () => ListBuilder<Content>(),
       )
       ..add(const OneOfSerializer())
       ..add(const AnyOfSerializer())

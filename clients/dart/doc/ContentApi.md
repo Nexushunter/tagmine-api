@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **contentGet**
-> contentGet(communityId, tagId, text, offset)
+> BuiltList<Content> contentGet(communityId, tagId, text, offset)
 
 List content
 
@@ -32,7 +32,8 @@ final String text = text_example; // String | Text to search for
 final int offset = 789; // int | The number of items to skip
 
 try {
-    api.contentGet(communityId, tagId, text, offset);
+    final response = api.contentGet(communityId, tagId, text, offset);
+    print(response);
 } catch on DioError (e) {
     print('Exception when calling ContentApi->contentGet: $e\n');
 }
@@ -49,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**BuiltList&lt;Content&gt;**](Content.md)
 
 ### Authorization
 
@@ -58,7 +59,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
