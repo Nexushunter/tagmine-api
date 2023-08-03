@@ -103,7 +103,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **userIdPostsGet**
-> userIdPostsGet(id, offset)
+> BuiltList<Content> userIdPostsGet(id, offset)
 
 Get posts by user ID.
 
@@ -116,7 +116,8 @@ final int id = 789; // int | ID of user
 final int offset = 789; // int | The number of items to skip
 
 try {
-    api.userIdPostsGet(id, offset);
+    final response = api.userIdPostsGet(id, offset);
+    print(response);
 } catch on DioError (e) {
     print('Exception when calling UserApi->userIdPostsGet: $e\n');
 }
@@ -131,7 +132,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**BuiltList&lt;Content&gt;**](Content.md)
 
 ### Authorization
 
@@ -140,7 +141,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

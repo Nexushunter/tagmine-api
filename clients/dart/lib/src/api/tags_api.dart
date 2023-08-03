@@ -7,7 +7,9 @@ import 'dart:async';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
+import 'package:built_collection/built_collection.dart';
 import 'package:tagmine_api_client/src/api_util.dart';
+import 'package:tagmine_api_client/src/model/id_response.dart';
 import 'package:tagmine_api_client/src/model/tag.dart';
 
 class TagsApi {
@@ -30,9 +32,9 @@ class TagsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future]
+  /// Returns a [Future] containing a [Response] with a [BuiltList<Tag>] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> tagGet({ 
+  Future<Response<BuiltList<Tag>>> tagGet({ 
     String? text,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -67,7 +69,35 @@ class TagsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    return _response;
+    BuiltList<Tag>? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(BuiltList, [FullType(Tag)]),
+      ) as BuiltList<Tag>;
+
+    } catch (error, stackTrace) {
+      throw DioError(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioErrorType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<BuiltList<Tag>>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
   }
 
   /// Delete tag
@@ -210,9 +240,9 @@ class TagsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future]
+  /// Returns a [Future] containing a [Response] with a [IdResponse] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> tagPost({ 
+  Future<Response<IdResponse>> tagPost({ 
     required String name,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -269,7 +299,35 @@ class TagsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    return _response;
+    IdResponse? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(IdResponse),
+      ) as IdResponse;
+
+    } catch (error, stackTrace) {
+      throw DioError(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioErrorType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<IdResponse>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
   }
 
 }

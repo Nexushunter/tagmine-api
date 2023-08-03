@@ -99,7 +99,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **authRegisterPost**
-> UserRegisterResponse authRegisterPost(username, email, password)
+> IdResponse authRegisterPost(username, email, password)
 
 Register new account
 
@@ -130,7 +130,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserRegisterResponse**](UserRegisterResponse.md)
+[**IdResponse**](IdResponse.md)
 
 ### Authorization
 

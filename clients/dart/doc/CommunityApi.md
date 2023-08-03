@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **communityGet**
-> communityGet(text)
+> BuiltList<Community> communityGet(text)
 
 Get communities
 
@@ -29,7 +29,8 @@ final api = TagmineApiClient().getCommunityApi();
 final String text = text_example; // String | Text to search for
 
 try {
-    api.communityGet(text);
+    final response = api.communityGet(text);
+    print(response);
 } catch on DioError (e) {
     print('Exception when calling CommunityApi->communityGet: $e\n');
 }
@@ -43,7 +44,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**BuiltList&lt;Community&gt;**](Community.md)
 
 ### Authorization
 
@@ -52,7 +53,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -186,7 +187,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **communityPost**
-> communityPost(name, description)
+> IdResponse communityPost(name, description)
 
 Add community
 
@@ -202,7 +203,8 @@ final String name = name_example; // String | Name of community
 final String description = description_example; // String | Description of community
 
 try {
-    api.communityPost(name, description);
+    final response = api.communityPost(name, description);
+    print(response);
 } catch on DioError (e) {
     print('Exception when calling CommunityApi->communityPost: $e\n');
 }
@@ -217,7 +219,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**IdResponse**](IdResponse.md)
 
 ### Authorization
 
@@ -226,7 +228,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

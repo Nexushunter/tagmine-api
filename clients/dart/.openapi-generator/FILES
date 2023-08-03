@@ -7,11 +7,11 @@ doc/Community.md
 doc/CommunityApi.md
 doc/Content.md
 doc/ContentApi.md
+doc/IdResponse.md
 doc/MetadataApi.md
 doc/Tag.md
 doc/TagsApi.md
 doc/UserApi.md
-doc/UserRegisterResponse.md
 lib/src/api.dart
 lib/src/api/auth_api.dart
 lib/src/api/comments_api.dart
@@ -30,8 +30,8 @@ lib/src/date_serializer.dart
 lib/src/model/community.dart
 lib/src/model/content.dart
 lib/src/model/date.dart
+lib/src/model/id_response.dart
 lib/src/model/tag.dart
-lib/src/model/user_register_response.dart
 lib/src/serializers.dart
 lib/tagmine_api_client.dart
 pubspec.yaml

@@ -8,7 +8,7 @@ info:
     
     Join our [Discord](https://discord.gg/6kvy54QEg).
 
-  version: 0.0.1
+  version: 0.1.0
 servers:
   - url: "https://rg7zweii14.execute-api.us-east-1.amazonaws.com/dev"
   - url: "http://localhost:8080/dev"
@@ -25,13 +25,13 @@ components:
     authLoginResponse:
       description: Authentication response
       type: string
-    userRegisterResponse:
-      description: User registration response
+    idResponse:
+      description: Response Containing an ID
       type: object
       properties:
         id:
           type: number
-          description: Newly created User ID
+          description: ID of newly created entity
     community:
       description: A user community
       type: object
@@ -268,6 +268,12 @@ paths:
       responses:
         "200":
           description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/tag'
     post:
       tags:
         - tags
@@ -288,6 +294,10 @@ paths:
       responses:
         "200":
           description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/idResponse'
   /tag/{id}:
     get:
       tags:
@@ -339,6 +349,12 @@ paths:
       responses:
         "200":
           description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/community'
     post:
       tags:
         - community
@@ -363,6 +379,10 @@ paths:
       responses:
         "200":
           description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/idResponse'
   /community/{id}:
     get:
       tags:
@@ -481,6 +501,10 @@ paths:
       responses:
         "200":
           description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/idResponse'
   /comments/{id}:
     put:
       tags:
@@ -557,7 +581,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/userRegisterResponse"
+                $ref: "#/components/schemas/idResponse"
   /auth/login:
     post:
       tags:
@@ -713,6 +737,12 @@ paths:
       responses:
         "200":
           description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/content'
   /user/{id}/comments:
     get:
       tags:

@@ -9,8 +9,8 @@ part of 'serializers.dart';
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Community.serializer)
       ..add(Content.serializer)
+      ..add(IdResponse.serializer)
       ..add(Tag.serializer)
-      ..add(UserRegisterResponse.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Community)]),
           () => new ListBuilder<Community>())

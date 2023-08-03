@@ -8,7 +8,7 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:tagmine_api_client/src/api_util.dart';
-import 'package:tagmine_api_client/src/model/user_register_response.dart';
+import 'package:tagmine_api_client/src/model/id_response.dart';
 
 class AuthApi {
 
@@ -180,9 +180,9 @@ class AuthApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [UserRegisterResponse] as data
+  /// Returns a [Future] containing a [Response] with a [IdResponse] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<UserRegisterResponse>> authRegisterPost({ 
+  Future<Response<IdResponse>> authRegisterPost({ 
     required String username,
     required String email,
     required String password,
@@ -237,14 +237,14 @@ class AuthApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    UserRegisterResponse? _responseData;
+    IdResponse? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(UserRegisterResponse),
-      ) as UserRegisterResponse;
+        specifiedType: const FullType(IdResponse),
+      ) as IdResponse;
 
     } catch (error, stackTrace) {
       throw DioError(
@@ -256,7 +256,7 @@ class AuthApi {
       );
     }
 
-    return Response<UserRegisterResponse>(
+    return Response<IdResponse>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

@@ -19,5 +19,5 @@ export 'package:tagmine_api_client/src/api/user_api.dart';
 
 export 'package:tagmine_api_client/src/model/community.dart';
 export 'package:tagmine_api_client/src/model/content.dart';
+export 'package:tagmine_api_client/src/model/id_response.dart';
 export 'package:tagmine_api_client/src/model/tag.dart';
-export 'package:tagmine_api_client/src/model/user_register_response.dart';

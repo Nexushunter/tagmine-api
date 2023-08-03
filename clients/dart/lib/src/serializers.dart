@@ -16,21 +16,29 @@ import 'package:tagmine_api_client/src/model/date.dart';
 
 import 'package:tagmine_api_client/src/model/community.dart';
 import 'package:tagmine_api_client/src/model/content.dart';
+import 'package:tagmine_api_client/src/model/id_response.dart';
 import 'package:tagmine_api_client/src/model/tag.dart';
-import 'package:tagmine_api_client/src/model/user_register_response.dart';
 
 part 'serializers.g.dart';
 
 @SerializersFor([
   Community,
   Content,
+  IdResponse,
   Tag,
-  UserRegisterResponse,
 ])
 Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(Community)]),
+        () => ListBuilder<Community>(),
+      )
+      ..addBuilderFactory(
         const FullType(BuiltList, [FullType(int)]),
         () => ListBuilder<int>(),
+      )
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(Tag)]),
+        () => ListBuilder<Tag>(),
       )
       ..addBuilderFactory(
         const FullType(BuiltList, [FullType(Content)]),
