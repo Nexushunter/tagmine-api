@@ -99,7 +99,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **tagIdGet**
-> tagIdGet(id)
+> Tag tagIdGet(id)
 
 Get tag by ID
 
@@ -111,7 +111,8 @@ final api = TagmineApiClient().getTagsApi();
 final int id = 789; // int | ID of content
 
 try {
-    api.tagIdGet(id);
+    final response = api.tagIdGet(id);
+    print(response);
 } catch on DioError (e) {
     print('Exception when calling TagsApi->tagIdGet: $e\n');
 }
@@ -125,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**Tag**](Tag.md)
 
 ### Authorization
 
@@ -134,7 +135,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

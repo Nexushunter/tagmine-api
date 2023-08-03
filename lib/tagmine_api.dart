@@ -12,7 +12,7 @@ import 'package:openapi_generator_annotations/openapi_generator_annotations.dart
   ),
   inputSpecFile: './openapi.yaml',
   generatorName: Generator.dio,
-  outputDirectory: 'clients/dart',
+  outputDirectory: './clients/dart',
   overwriteExistingFiles: true,
   alwaysRun: true,
   fetchDependencies: true,

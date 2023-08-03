@@ -14,6 +14,7 @@ part 'community.g.dart';
 /// * [id] 
 /// * [name] 
 /// * [numComments] 
+/// * [description] 
 @BuiltValue()
 abstract class Community implements Built<Community, CommunityBuilder> {
   @BuiltValueField(wireName: r'id')
@@ -24,6 +25,9 @@ abstract class Community implements Built<Community, CommunityBuilder> {
 
   @BuiltValueField(wireName: r'num_comments')
   num? get numComments;
+
+  @BuiltValueField(wireName: r'description')
+  String? get description;
 
   Community._();
 
@@ -69,6 +73,13 @@ class _$CommunitySerializer implements PrimitiveSerializer<Community> {
         specifiedType: const FullType(num),
       );
     }
+    if (object.description != null) {
+      yield r'description';
+      yield serializers.serialize(
+        object.description,
+        specifiedType: const FullType(String),
+      );
+    }
   }
 
   @override
@@ -112,6 +123,13 @@ class _$CommunitySerializer implements PrimitiveSerializer<Community> {
             specifiedType: const FullType(num),
           ) as num;
           result.numComments = valueDes;
+          break;
+        case r'description':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.description = valueDes;
           break;
         default:
           unhandled.add(key);

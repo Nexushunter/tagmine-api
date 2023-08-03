@@ -42,6 +42,8 @@ components:
           type: string
         num_comments:
           type: number
+        description:
+          type: string
     tag:
       description: A content tag
       type: object
@@ -188,6 +190,10 @@ paths:
       responses:
         "200":
           description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/content'
     put:
       tags:
         - content
@@ -298,6 +304,10 @@ paths:
       responses:
         "200":
           description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/tag'
     delete:
       tags:
         - tags
@@ -369,6 +379,10 @@ paths:
       responses:
         "200":
           description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/community'
     put:
       tags:
         - community

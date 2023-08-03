@@ -13,11 +13,14 @@ class _$Community extends Community {
   final String? name;
   @override
   final num? numComments;
+  @override
+  final String? description;
 
   factory _$Community([void Function(CommunityBuilder)? updates]) =>
       (new CommunityBuilder()..update(updates))._build();
 
-  _$Community._({this.id, this.name, this.numComments}) : super._();
+  _$Community._({this.id, this.name, this.numComments, this.description})
+      : super._();
 
   @override
   Community rebuild(void Function(CommunityBuilder) updates) =>
@@ -32,7 +35,8 @@ class _$Community extends Community {
     return other is Community &&
         id == other.id &&
         name == other.name &&
-        numComments == other.numComments;
+        numComments == other.numComments &&
+        description == other.description;
   }
 
   @override
@@ -41,6 +45,7 @@ class _$Community extends Community {
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, numComments.hashCode);
+    _$hash = $jc(_$hash, description.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -50,7 +55,8 @@ class _$Community extends Community {
     return (newBuiltValueToStringHelper(r'Community')
           ..add('id', id)
           ..add('name', name)
-          ..add('numComments', numComments))
+          ..add('numComments', numComments)
+          ..add('description', description))
         .toString();
   }
 }
@@ -70,6 +76,10 @@ class CommunityBuilder implements Builder<Community, CommunityBuilder> {
   num? get numComments => _$this._numComments;
   set numComments(num? numComments) => _$this._numComments = numComments;
 
+  String? _description;
+  String? get description => _$this._description;
+  set description(String? description) => _$this._description = description;
+
   CommunityBuilder() {
     Community._defaults(this);
   }
@@ -80,6 +90,7 @@ class CommunityBuilder implements Builder<Community, CommunityBuilder> {
       _id = $v.id;
       _name = $v.name;
       _numComments = $v.numComments;
+      _description = $v.description;
       _$v = null;
     }
     return this;
@@ -100,8 +111,12 @@ class CommunityBuilder implements Builder<Community, CommunityBuilder> {
   Community build() => _build();
 
   _$Community _build() {
-    final _$result =
-        _$v ?? new _$Community._(id: id, name: name, numComments: numComments);
+    final _$result = _$v ??
+        new _$Community._(
+            id: id,
+            name: name,
+            numComments: numComments,
+            description: description);
     replace(_$result);
     return _$result;
   }

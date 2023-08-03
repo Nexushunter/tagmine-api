@@ -100,7 +100,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **communityIdGet**
-> communityIdGet(id)
+> Community communityIdGet(id)
 
 Get community by ID
 
@@ -112,7 +112,8 @@ final api = TagmineApiClient().getCommunityApi();
 final int id = 789; // int | ID of community
 
 try {
-    api.communityIdGet(id);
+    final response = api.communityIdGet(id);
+    print(response);
 } catch on DioError (e) {
     print('Exception when calling CommunityApi->communityIdGet: $e\n');
 }
@@ -126,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**Community**](Community.md)
 
 ### Authorization
 
@@ -135,7 +136,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
