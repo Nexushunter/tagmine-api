@@ -61,7 +61,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **userIdCommentsGet**
-> userIdCommentsGet(id, offset)
+> BuiltList<Comment> userIdCommentsGet(id, offset)
 
 Get comments by user ID.
 
@@ -74,7 +74,8 @@ final int id = 789; // int | ID of user
 final int offset = 789; // int | The number of items to skip
 
 try {
-    api.userIdCommentsGet(id, offset);
+    final response = api.userIdCommentsGet(id, offset);
+    print(response);
 } catch on DioError (e) {
     print('Exception when calling UserApi->userIdCommentsGet: $e\n');
 }
@@ -89,7 +90,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**BuiltList&lt;Comment&gt;**](Comment.md)
 
 ### Authorization
 
@@ -98,12 +99,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **userIdPostsGet**
-> BuiltList<Content> userIdPostsGet(id, offset)
+> BuiltList<UserIdPostsGet200ResponseInner> userIdPostsGet(id, offset)
 
 Get posts by user ID.
 
@@ -132,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BuiltList&lt;Content&gt;**](Content.md)
+[**BuiltList&lt;UserIdPostsGet200ResponseInner&gt;**](UserIdPostsGet200ResponseInner.md)
 
 ### Authorization
 

@@ -9,7 +9,8 @@ import 'package:dio/dio.dart';
 
 import 'package:built_collection/built_collection.dart';
 import 'package:tagmine_api_client/src/api_util.dart';
-import 'package:tagmine_api_client/src/model/content.dart';
+import 'package:tagmine_api_client/src/model/comment.dart';
+import 'package:tagmine_api_client/src/model/user_id_posts_get200_response_inner.dart';
 
 class UserApi {
 
@@ -90,9 +91,9 @@ class UserApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future]
+  /// Returns a [Future] containing a [Response] with a [BuiltList<Comment>] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> userIdCommentsGet({ 
+  Future<Response<BuiltList<Comment>>> userIdCommentsGet({ 
     required int id,
     int? offset,
     CancelToken? cancelToken,
@@ -128,7 +129,35 @@ class UserApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    return _response;
+    BuiltList<Comment>? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(BuiltList, [FullType(Comment)]),
+      ) as BuiltList<Comment>;
+
+    } catch (error, stackTrace) {
+      throw DioError(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioErrorType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<BuiltList<Comment>>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
   }
 
   /// Get posts by user ID.
@@ -144,9 +173,9 @@ class UserApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BuiltList<Content>] as data
+  /// Returns a [Future] containing a [Response] with a [BuiltList<UserIdPostsGet200ResponseInner>] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<BuiltList<Content>>> userIdPostsGet({ 
+  Future<Response<BuiltList<UserIdPostsGet200ResponseInner>>> userIdPostsGet({ 
     required int id,
     int? offset,
     CancelToken? cancelToken,
@@ -182,14 +211,14 @@ class UserApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<Content>? _responseData;
+    BuiltList<UserIdPostsGet200ResponseInner>? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(Content)]),
-      ) as BuiltList<Content>;
+        specifiedType: const FullType(BuiltList, [FullType(UserIdPostsGet200ResponseInner)]),
+      ) as BuiltList<UserIdPostsGet200ResponseInner>;
 
     } catch (error, stackTrace) {
       throw DioError(
@@ -201,7 +230,7 @@ class UserApi {
       );
     }
 
-    return Response<BuiltList<Content>>(
+    return Response<BuiltList<UserIdPostsGet200ResponseInner>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

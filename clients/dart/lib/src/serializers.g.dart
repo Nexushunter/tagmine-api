@@ -7,10 +7,12 @@ part of 'serializers.dart';
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
+      ..add(Comment.serializer)
       ..add(Community.serializer)
       ..add(Content.serializer)
       ..add(IdResponse.serializer)
       ..add(Tag.serializer)
+      ..add(UserIdPostsGet200ResponseInner.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Community)]),
           () => new ListBuilder<Community>())

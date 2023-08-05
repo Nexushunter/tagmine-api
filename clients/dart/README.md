@@ -100,10 +100,12 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [Comment](doc/Comment.md)
  - [Community](doc/Community.md)
  - [Content](doc/Content.md)
  - [IdResponse](doc/IdResponse.md)
  - [Tag](doc/Tag.md)
+ - [UserIdPostsGet200ResponseInner](doc/UserIdPostsGet200ResponseInner.md)
 
 
 ## Documentation For Authorization

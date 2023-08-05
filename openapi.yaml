@@ -32,6 +32,20 @@ components:
         id:
           type: number
           description: ID of newly created entity
+    comment:
+      description: A comment on a piece of content
+      type: object
+      properties:
+        id:
+          type: number
+        text:
+          type: string
+        community_id:
+          type: number
+        content_id:
+          type: number
+        parent_id:
+          type: number
     community:
       description: A user community
       type: object
@@ -174,6 +188,10 @@ paths:
       responses:
         "200":
           description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/idResponse'
   /content/{id}:
     get:
       tags:
@@ -470,6 +488,12 @@ paths:
       responses:
         "200":
           description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/comment'
     post:
       tags:
         - comments
@@ -742,7 +766,9 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/content'
+                  anyOf:
+                    - $ref: '#/components/schemas/content'
+                    - $ref: '#/components/schemas/comment'
   /user/{id}/comments:
     get:
       tags:
@@ -765,3 +791,9 @@ paths:
       responses:
         "200":
           description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/comment'

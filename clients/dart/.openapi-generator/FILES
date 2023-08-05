@@ -2,6 +2,7 @@
 README.md
 analysis_options.yaml
 doc/AuthApi.md
+doc/Comment.md
 doc/CommentsApi.md
 doc/Community.md
 doc/CommunityApi.md
@@ -12,6 +13,7 @@ doc/MetadataApi.md
 doc/Tag.md
 doc/TagsApi.md
 doc/UserApi.md
+doc/UserIdPostsGet200ResponseInner.md
 lib/src/api.dart
 lib/src/api/auth_api.dart
 lib/src/api/comments_api.dart
@@ -27,11 +29,13 @@ lib/src/auth/basic_auth.dart
 lib/src/auth/bearer_auth.dart
 lib/src/auth/oauth.dart
 lib/src/date_serializer.dart
+lib/src/model/comment.dart
 lib/src/model/community.dart
 lib/src/model/content.dart
 lib/src/model/date.dart
 lib/src/model/id_response.dart
 lib/src/model/tag.dart
+lib/src/model/user_id_posts_get200_response_inner.dart
 lib/src/serializers.dart
 lib/tagmine_api_client.dart
 pubspec.yaml
