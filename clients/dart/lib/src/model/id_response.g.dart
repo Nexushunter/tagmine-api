@@ -8,7 +8,7 @@ part of 'id_response.dart';
 
 class _$IdResponse extends IdResponse {
   @override
-  final num id;
+  final int id;
 
   factory _$IdResponse([void Function(IdResponseBuilder)? updates]) =>
       (new IdResponseBuilder()..update(updates))._build();
@@ -48,9 +48,9 @@ class _$IdResponse extends IdResponse {
 class IdResponseBuilder implements Builder<IdResponse, IdResponseBuilder> {
   _$IdResponse? _$v;
 
-  num? _id;
-  num? get id => _$this._id;
-  set id(num? id) => _$this._id = id;
+  int? _id;
+  int? get id => _$this._id;
+  set id(int? id) => _$this._id = id;
 
   IdResponseBuilder() {
     IdResponse._defaults(this);

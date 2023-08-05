@@ -30,7 +30,7 @@ components:
       type: object
       properties:
         id:
-          type: number
+          type: integer
           description: ID of newly created entity
       required:
         - id
