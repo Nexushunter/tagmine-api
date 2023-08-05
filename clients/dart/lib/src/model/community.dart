@@ -18,16 +18,16 @@ part 'community.g.dart';
 @BuiltValue()
 abstract class Community implements Built<Community, CommunityBuilder> {
   @BuiltValueField(wireName: r'id')
-  num? get id;
+  int get id;
 
   @BuiltValueField(wireName: r'name')
-  String? get name;
+  String get name;
 
   @BuiltValueField(wireName: r'num_comments')
-  num? get numComments;
+  int get numComments;
 
   @BuiltValueField(wireName: r'description')
-  String? get description;
+  String get description;
 
   Community._();
 
@@ -52,34 +52,26 @@ class _$CommunitySerializer implements PrimitiveSerializer<Community> {
     Community object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType(num),
-      );
-    }
-    if (object.name != null) {
-      yield r'name';
-      yield serializers.serialize(
-        object.name,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.numComments != null) {
-      yield r'num_comments';
-      yield serializers.serialize(
-        object.numComments,
-        specifiedType: const FullType(num),
-      );
-    }
-    if (object.description != null) {
-      yield r'description';
-      yield serializers.serialize(
-        object.description,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'id';
+    yield serializers.serialize(
+      object.id,
+      specifiedType: const FullType(int),
+    );
+    yield r'name';
+    yield serializers.serialize(
+      object.name,
+      specifiedType: const FullType(String),
+    );
+    yield r'num_comments';
+    yield serializers.serialize(
+      object.numComments,
+      specifiedType: const FullType(int),
+    );
+    yield r'description';
+    yield serializers.serialize(
+      object.description,
+      specifiedType: const FullType(String),
+    );
   }
 
   @override
@@ -106,8 +98,8 @@ class _$CommunitySerializer implements PrimitiveSerializer<Community> {
         case r'id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(num),
-          ) as num;
+            specifiedType: const FullType(int),
+          ) as int;
           result.id = valueDes;
           break;
         case r'name':
@@ -120,8 +112,8 @@ class _$CommunitySerializer implements PrimitiveSerializer<Community> {
         case r'num_comments':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(num),
-          ) as num;
+            specifiedType: const FullType(int),
+          ) as int;
           result.numComments = valueDes;
           break;
         case r'description':

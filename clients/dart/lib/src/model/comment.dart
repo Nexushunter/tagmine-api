@@ -19,19 +19,19 @@ part 'comment.g.dart';
 @BuiltValue()
 abstract class Comment implements Built<Comment, CommentBuilder> {
   @BuiltValueField(wireName: r'id')
-  num? get id;
+  int get id;
 
   @BuiltValueField(wireName: r'text')
-  String? get text;
+  String get text;
 
   @BuiltValueField(wireName: r'community_id')
-  num? get communityId;
+  int get communityId;
 
   @BuiltValueField(wireName: r'content_id')
-  num? get contentId;
+  int get contentId;
 
   @BuiltValueField(wireName: r'parent_id')
-  num? get parentId;
+  int? get parentId;
 
   Comment._();
 
@@ -56,39 +56,31 @@ class _$CommentSerializer implements PrimitiveSerializer<Comment> {
     Comment object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType(num),
-      );
-    }
-    if (object.text != null) {
-      yield r'text';
-      yield serializers.serialize(
-        object.text,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.communityId != null) {
-      yield r'community_id';
-      yield serializers.serialize(
-        object.communityId,
-        specifiedType: const FullType(num),
-      );
-    }
-    if (object.contentId != null) {
-      yield r'content_id';
-      yield serializers.serialize(
-        object.contentId,
-        specifiedType: const FullType(num),
-      );
-    }
+    yield r'id';
+    yield serializers.serialize(
+      object.id,
+      specifiedType: const FullType(int),
+    );
+    yield r'text';
+    yield serializers.serialize(
+      object.text,
+      specifiedType: const FullType(String),
+    );
+    yield r'community_id';
+    yield serializers.serialize(
+      object.communityId,
+      specifiedType: const FullType(int),
+    );
+    yield r'content_id';
+    yield serializers.serialize(
+      object.contentId,
+      specifiedType: const FullType(int),
+    );
     if (object.parentId != null) {
       yield r'parent_id';
       yield serializers.serialize(
         object.parentId,
-        specifiedType: const FullType(num),
+        specifiedType: const FullType(int),
       );
     }
   }
@@ -117,8 +109,8 @@ class _$CommentSerializer implements PrimitiveSerializer<Comment> {
         case r'id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(num),
-          ) as num;
+            specifiedType: const FullType(int),
+          ) as int;
           result.id = valueDes;
           break;
         case r'text':
@@ -131,22 +123,22 @@ class _$CommentSerializer implements PrimitiveSerializer<Comment> {
         case r'community_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(num),
-          ) as num;
+            specifiedType: const FullType(int),
+          ) as int;
           result.communityId = valueDes;
           break;
         case r'content_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(num),
-          ) as num;
+            specifiedType: const FullType(int),
+          ) as int;
           result.contentId = valueDes;
           break;
         case r'parent_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(num),
-          ) as num;
+            specifiedType: const FullType(int),
+          ) as int;
           result.parentId = valueDes;
           break;
         default:

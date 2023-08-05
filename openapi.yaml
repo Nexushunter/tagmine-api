@@ -32,46 +32,61 @@ components:
         id:
           type: number
           description: ID of newly created entity
+      required:
+        - id
     comment:
       description: A comment on a piece of content
       type: object
       properties:
         id:
-          type: number
+          type: integer
         text:
           type: string
         community_id:
-          type: number
+          type: integer
         content_id:
-          type: number
+          type: integer
         parent_id:
-          type: number
+          type: integer
+      required:
+        - id
+        - text
+        - community_id
+        - content_id
     community:
       description: A user community
       type: object
       properties:
         id:
-          type: number
+          type: integer
         name:
           type: string
         num_comments:
-          type: number
+          type: integer
         description:
           type: string
+      required:
+        - id
+        - name
+        - num_comments
+        - description
     tag:
       description: A content tag
       type: object
       properties:
         id:
-          type: number
+          type: integer
         name:
           type: string
+      required:
+        - id
+        - name
     content:
       description: Content Entry
       type: object
       properties:
         id:
-          type: number
+          type: integer
         title:
           type: string
         url:
@@ -88,6 +103,13 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/tag"
+      required:
+        - id
+        - title
+        - url
+        - user_id
+        - username
+        - communities
   securitySchemes:
     bearerAuth:
       type: http

@@ -8,22 +8,32 @@ part of 'comment.dart';
 
 class _$Comment extends Comment {
   @override
-  final num? id;
+  final int id;
   @override
-  final String? text;
+  final String text;
   @override
-  final num? communityId;
+  final int communityId;
   @override
-  final num? contentId;
+  final int contentId;
   @override
-  final num? parentId;
+  final int? parentId;
 
   factory _$Comment([void Function(CommentBuilder)? updates]) =>
       (new CommentBuilder()..update(updates))._build();
 
   _$Comment._(
-      {this.id, this.text, this.communityId, this.contentId, this.parentId})
-      : super._();
+      {required this.id,
+      required this.text,
+      required this.communityId,
+      required this.contentId,
+      this.parentId})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(id, r'Comment', 'id');
+    BuiltValueNullFieldError.checkNotNull(text, r'Comment', 'text');
+    BuiltValueNullFieldError.checkNotNull(
+        communityId, r'Comment', 'communityId');
+    BuiltValueNullFieldError.checkNotNull(contentId, r'Comment', 'contentId');
+  }
 
   @override
   Comment rebuild(void Function(CommentBuilder) updates) =>
@@ -70,25 +80,25 @@ class _$Comment extends Comment {
 class CommentBuilder implements Builder<Comment, CommentBuilder> {
   _$Comment? _$v;
 
-  num? _id;
-  num? get id => _$this._id;
-  set id(num? id) => _$this._id = id;
+  int? _id;
+  int? get id => _$this._id;
+  set id(int? id) => _$this._id = id;
 
   String? _text;
   String? get text => _$this._text;
   set text(String? text) => _$this._text = text;
 
-  num? _communityId;
-  num? get communityId => _$this._communityId;
-  set communityId(num? communityId) => _$this._communityId = communityId;
+  int? _communityId;
+  int? get communityId => _$this._communityId;
+  set communityId(int? communityId) => _$this._communityId = communityId;
 
-  num? _contentId;
-  num? get contentId => _$this._contentId;
-  set contentId(num? contentId) => _$this._contentId = contentId;
+  int? _contentId;
+  int? get contentId => _$this._contentId;
+  set contentId(int? contentId) => _$this._contentId = contentId;
 
-  num? _parentId;
-  num? get parentId => _$this._parentId;
-  set parentId(num? parentId) => _$this._parentId = parentId;
+  int? _parentId;
+  int? get parentId => _$this._parentId;
+  set parentId(int? parentId) => _$this._parentId = parentId;
 
   CommentBuilder() {
     Comment._defaults(this);
@@ -124,10 +134,13 @@ class CommentBuilder implements Builder<Comment, CommentBuilder> {
   _$Comment _build() {
     final _$result = _$v ??
         new _$Comment._(
-            id: id,
-            text: text,
-            communityId: communityId,
-            contentId: contentId,
+            id: BuiltValueNullFieldError.checkNotNull(id, r'Comment', 'id'),
+            text:
+                BuiltValueNullFieldError.checkNotNull(text, r'Comment', 'text'),
+            communityId: BuiltValueNullFieldError.checkNotNull(
+                communityId, r'Comment', 'communityId'),
+            contentId: BuiltValueNullFieldError.checkNotNull(
+                contentId, r'Comment', 'contentId'),
             parentId: parentId);
     replace(_$result);
     return _$result;

@@ -8,19 +8,30 @@ part of 'community.dart';
 
 class _$Community extends Community {
   @override
-  final num? id;
+  final int id;
   @override
-  final String? name;
+  final String name;
   @override
-  final num? numComments;
+  final int numComments;
   @override
-  final String? description;
+  final String description;
 
   factory _$Community([void Function(CommunityBuilder)? updates]) =>
       (new CommunityBuilder()..update(updates))._build();
 
-  _$Community._({this.id, this.name, this.numComments, this.description})
-      : super._();
+  _$Community._(
+      {required this.id,
+      required this.name,
+      required this.numComments,
+      required this.description})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(id, r'Community', 'id');
+    BuiltValueNullFieldError.checkNotNull(name, r'Community', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        numComments, r'Community', 'numComments');
+    BuiltValueNullFieldError.checkNotNull(
+        description, r'Community', 'description');
+  }
 
   @override
   Community rebuild(void Function(CommunityBuilder) updates) =>
@@ -64,17 +75,17 @@ class _$Community extends Community {
 class CommunityBuilder implements Builder<Community, CommunityBuilder> {
   _$Community? _$v;
 
-  num? _id;
-  num? get id => _$this._id;
-  set id(num? id) => _$this._id = id;
+  int? _id;
+  int? get id => _$this._id;
+  set id(int? id) => _$this._id = id;
 
   String? _name;
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  num? _numComments;
-  num? get numComments => _$this._numComments;
-  set numComments(num? numComments) => _$this._numComments = numComments;
+  int? _numComments;
+  int? get numComments => _$this._numComments;
+  set numComments(int? numComments) => _$this._numComments = numComments;
 
   String? _description;
   String? get description => _$this._description;
@@ -113,10 +124,13 @@ class CommunityBuilder implements Builder<Community, CommunityBuilder> {
   _$Community _build() {
     final _$result = _$v ??
         new _$Community._(
-            id: id,
-            name: name,
-            numComments: numComments,
-            description: description);
+            id: BuiltValueNullFieldError.checkNotNull(id, r'Community', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'Community', 'name'),
+            numComments: BuiltValueNullFieldError.checkNotNull(
+                numComments, r'Community', 'numComments'),
+            description: BuiltValueNullFieldError.checkNotNull(
+                description, r'Community', 'description'));
     replace(_$result);
     return _$result;
   }

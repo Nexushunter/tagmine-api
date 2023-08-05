@@ -23,10 +23,10 @@ part 'user_id_posts_get200_response_inner.g.dart';
 /// * [userId] 
 /// * [username] 
 /// * [communities] 
-/// * [tags] 
 /// * [text] 
 /// * [communityId] 
 /// * [contentId] 
+/// * [tags] 
 /// * [parentId] 
 @BuiltValue()
 abstract class UserIdPostsGet200ResponseInner implements Built<UserIdPostsGet200ResponseInner, UserIdPostsGet200ResponseInnerBuilder> {

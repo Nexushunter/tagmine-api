@@ -8,10 +8,10 @@ import 'package:tagmine_api_client/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **num** |  | [optional] 
-**name** | **String** |  | [optional] 
-**numComments** | **num** |  | [optional] 
-**description** | **String** |  | [optional] 
+**id** | **int** |  | 
+**name** | **String** |  | 
+**numComments** | **int** |  | 
+**description** | **String** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

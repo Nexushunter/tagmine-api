@@ -8,14 +8,17 @@ part of 'tag.dart';
 
 class _$Tag extends Tag {
   @override
-  final num? id;
+  final int id;
   @override
-  final String? name;
+  final String name;
 
   factory _$Tag([void Function(TagBuilder)? updates]) =>
       (new TagBuilder()..update(updates))._build();
 
-  _$Tag._({this.id, this.name}) : super._();
+  _$Tag._({required this.id, required this.name}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(id, r'Tag', 'id');
+    BuiltValueNullFieldError.checkNotNull(name, r'Tag', 'name');
+  }
 
   @override
   Tag rebuild(void Function(TagBuilder) updates) =>
@@ -51,9 +54,9 @@ class _$Tag extends Tag {
 class TagBuilder implements Builder<Tag, TagBuilder> {
   _$Tag? _$v;
 
-  num? _id;
-  num? get id => _$this._id;
-  set id(num? id) => _$this._id = id;
+  int? _id;
+  int? get id => _$this._id;
+  set id(int? id) => _$this._id = id;
 
   String? _name;
   String? get name => _$this._name;
@@ -88,7 +91,10 @@ class TagBuilder implements Builder<Tag, TagBuilder> {
   Tag build() => _build();
 
   _$Tag _build() {
-    final _$result = _$v ?? new _$Tag._(id: id, name: name);
+    final _$result = _$v ??
+        new _$Tag._(
+            id: BuiltValueNullFieldError.checkNotNull(id, r'Tag', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(name, r'Tag', 'name'));
     replace(_$result);
     return _$result;
   }

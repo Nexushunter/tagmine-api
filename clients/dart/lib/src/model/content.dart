@@ -24,22 +24,22 @@ part 'content.g.dart';
 @BuiltValue()
 abstract class Content implements Built<Content, ContentBuilder> {
   @BuiltValueField(wireName: r'id')
-  num? get id;
+  int get id;
 
   @BuiltValueField(wireName: r'title')
-  String? get title;
+  String get title;
 
   @BuiltValueField(wireName: r'url')
-  String? get url;
+  String get url;
 
   @BuiltValueField(wireName: r'user_id')
-  String? get userId;
+  String get userId;
 
   @BuiltValueField(wireName: r'username')
-  String? get username;
+  String get username;
 
   @BuiltValueField(wireName: r'communities')
-  BuiltList<Community>? get communities;
+  BuiltList<Community> get communities;
 
   @BuiltValueField(wireName: r'tags')
   BuiltList<Tag>? get tags;
@@ -67,48 +67,36 @@ class _$ContentSerializer implements PrimitiveSerializer<Content> {
     Content object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType(num),
-      );
-    }
-    if (object.title != null) {
-      yield r'title';
-      yield serializers.serialize(
-        object.title,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.url != null) {
-      yield r'url';
-      yield serializers.serialize(
-        object.url,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.userId != null) {
-      yield r'user_id';
-      yield serializers.serialize(
-        object.userId,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.username != null) {
-      yield r'username';
-      yield serializers.serialize(
-        object.username,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.communities != null) {
-      yield r'communities';
-      yield serializers.serialize(
-        object.communities,
-        specifiedType: const FullType(BuiltList, [FullType(Community)]),
-      );
-    }
+    yield r'id';
+    yield serializers.serialize(
+      object.id,
+      specifiedType: const FullType(int),
+    );
+    yield r'title';
+    yield serializers.serialize(
+      object.title,
+      specifiedType: const FullType(String),
+    );
+    yield r'url';
+    yield serializers.serialize(
+      object.url,
+      specifiedType: const FullType(String),
+    );
+    yield r'user_id';
+    yield serializers.serialize(
+      object.userId,
+      specifiedType: const FullType(String),
+    );
+    yield r'username';
+    yield serializers.serialize(
+      object.username,
+      specifiedType: const FullType(String),
+    );
+    yield r'communities';
+    yield serializers.serialize(
+      object.communities,
+      specifiedType: const FullType(BuiltList, [FullType(Community)]),
+    );
     if (object.tags != null) {
       yield r'tags';
       yield serializers.serialize(
@@ -142,8 +130,8 @@ class _$ContentSerializer implements PrimitiveSerializer<Content> {
         case r'id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(num),
-          ) as num;
+            specifiedType: const FullType(int),
+          ) as int;
           result.id = valueDes;
           break;
         case r'title':

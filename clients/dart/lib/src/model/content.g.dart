@@ -8,17 +8,17 @@ part of 'content.dart';
 
 class _$Content extends Content {
   @override
-  final num? id;
+  final int id;
   @override
-  final String? title;
+  final String title;
   @override
-  final String? url;
+  final String url;
   @override
-  final String? userId;
+  final String userId;
   @override
-  final String? username;
+  final String username;
   @override
-  final BuiltList<Community>? communities;
+  final BuiltList<Community> communities;
   @override
   final BuiltList<Tag>? tags;
 
@@ -26,14 +26,22 @@ class _$Content extends Content {
       (new ContentBuilder()..update(updates))._build();
 
   _$Content._(
-      {this.id,
-      this.title,
-      this.url,
-      this.userId,
-      this.username,
-      this.communities,
+      {required this.id,
+      required this.title,
+      required this.url,
+      required this.userId,
+      required this.username,
+      required this.communities,
       this.tags})
-      : super._();
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(id, r'Content', 'id');
+    BuiltValueNullFieldError.checkNotNull(title, r'Content', 'title');
+    BuiltValueNullFieldError.checkNotNull(url, r'Content', 'url');
+    BuiltValueNullFieldError.checkNotNull(userId, r'Content', 'userId');
+    BuiltValueNullFieldError.checkNotNull(username, r'Content', 'username');
+    BuiltValueNullFieldError.checkNotNull(
+        communities, r'Content', 'communities');
+  }
 
   @override
   Content rebuild(void Function(ContentBuilder) updates) =>
@@ -86,9 +94,9 @@ class _$Content extends Content {
 class ContentBuilder implements Builder<Content, ContentBuilder> {
   _$Content? _$v;
 
-  num? _id;
-  num? get id => _$this._id;
-  set id(num? id) => _$this._id = id;
+  int? _id;
+  int? get id => _$this._id;
+  set id(int? id) => _$this._id = id;
 
   String? _title;
   String? get title => _$this._title;
@@ -128,7 +136,7 @@ class ContentBuilder implements Builder<Content, ContentBuilder> {
       _url = $v.url;
       _userId = $v.userId;
       _username = $v.username;
-      _communities = $v.communities?.toBuilder();
+      _communities = $v.communities.toBuilder();
       _tags = $v.tags?.toBuilder();
       _$v = null;
     }
@@ -154,18 +162,22 @@ class ContentBuilder implements Builder<Content, ContentBuilder> {
     try {
       _$result = _$v ??
           new _$Content._(
-              id: id,
-              title: title,
-              url: url,
-              userId: userId,
-              username: username,
-              communities: _communities?.build(),
+              id: BuiltValueNullFieldError.checkNotNull(id, r'Content', 'id'),
+              title: BuiltValueNullFieldError.checkNotNull(
+                  title, r'Content', 'title'),
+              url:
+                  BuiltValueNullFieldError.checkNotNull(url, r'Content', 'url'),
+              userId: BuiltValueNullFieldError.checkNotNull(
+                  userId, r'Content', 'userId'),
+              username: BuiltValueNullFieldError.checkNotNull(
+                  username, r'Content', 'username'),
+              communities: communities.build(),
               tags: _tags?.build());
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'communities';
-        _communities?.build();
+        communities.build();
         _$failedField = 'tags';
         _tags?.build();
       } catch (e) {

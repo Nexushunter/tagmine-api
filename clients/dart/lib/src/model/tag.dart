@@ -16,10 +16,10 @@ part 'tag.g.dart';
 @BuiltValue()
 abstract class Tag implements Built<Tag, TagBuilder> {
   @BuiltValueField(wireName: r'id')
-  num? get id;
+  int get id;
 
   @BuiltValueField(wireName: r'name')
-  String? get name;
+  String get name;
 
   Tag._();
 
@@ -44,20 +44,16 @@ class _$TagSerializer implements PrimitiveSerializer<Tag> {
     Tag object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType(num),
-      );
-    }
-    if (object.name != null) {
-      yield r'name';
-      yield serializers.serialize(
-        object.name,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'id';
+    yield serializers.serialize(
+      object.id,
+      specifiedType: const FullType(int),
+    );
+    yield r'name';
+    yield serializers.serialize(
+      object.name,
+      specifiedType: const FullType(String),
+    );
   }
 
   @override
@@ -84,8 +80,8 @@ class _$TagSerializer implements PrimitiveSerializer<Tag> {
         case r'id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(num),
-          ) as num;
+            specifiedType: const FullType(int),
+          ) as int;
           result.id = valueDes;
           break;
         case r'name':

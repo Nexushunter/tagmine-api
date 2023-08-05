@@ -16,7 +16,7 @@ part 'id_response.g.dart';
 abstract class IdResponse implements Built<IdResponse, IdResponseBuilder> {
   /// ID of newly created entity
   @BuiltValueField(wireName: r'id')
-  num? get id;
+  num get id;
 
   IdResponse._();
 
@@ -41,13 +41,11 @@ class _$IdResponseSerializer implements PrimitiveSerializer<IdResponse> {
     IdResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType(num),
-      );
-    }
+    yield r'id';
+    yield serializers.serialize(
+      object.id,
+      specifiedType: const FullType(num),
+    );
   }
 
   @override

@@ -8,12 +8,14 @@ part of 'id_response.dart';
 
 class _$IdResponse extends IdResponse {
   @override
-  final num? id;
+  final num id;
 
   factory _$IdResponse([void Function(IdResponseBuilder)? updates]) =>
       (new IdResponseBuilder()..update(updates))._build();
 
-  _$IdResponse._({this.id}) : super._();
+  _$IdResponse._({required this.id}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(id, r'IdResponse', 'id');
+  }
 
   @override
   IdResponse rebuild(void Function(IdResponseBuilder) updates) =>
@@ -78,7 +80,9 @@ class IdResponseBuilder implements Builder<IdResponse, IdResponseBuilder> {
   IdResponse build() => _build();
 
   _$IdResponse _build() {
-    final _$result = _$v ?? new _$IdResponse._(id: id);
+    final _$result = _$v ??
+        new _$IdResponse._(
+            id: BuiltValueNullFieldError.checkNotNull(id, r'IdResponse', 'id'));
     replace(_$result);
     return _$result;
   }
