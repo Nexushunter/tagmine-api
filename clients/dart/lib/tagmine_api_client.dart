@@ -17,3 +17,9 @@ export 'package:tagmine_api_client/src/api/metadata_api.dart';
 export 'package:tagmine_api_client/src/api/tags_api.dart';
 export 'package:tagmine_api_client/src/api/user_api.dart';
 
+export 'package:tagmine_api_client/src/model/comment.dart';
+export 'package:tagmine_api_client/src/model/community.dart';
+export 'package:tagmine_api_client/src/model/content.dart';
+export 'package:tagmine_api_client/src/model/id_response.dart';
+export 'package:tagmine_api_client/src/model/tag.dart';
+export 'package:tagmine_api_client/src/model/user_id_posts_get200_response_inner.dart';

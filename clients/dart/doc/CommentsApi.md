@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **commentsGet**
-> commentsGet(communityId, contentId)
+> BuiltList<Comment> commentsGet(communityId, contentId)
 
 Get comments
 
@@ -29,7 +29,8 @@ final int communityId = 789; // int | ID of community
 final int contentId = 56; // int | ID of content
 
 try {
-    api.commentsGet(communityId, contentId);
+    final response = api.commentsGet(communityId, contentId);
+    print(response);
 } catch on DioError (e) {
     print('Exception when calling CommentsApi->commentsGet: $e\n');
 }
@@ -44,7 +45,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**BuiltList&lt;Comment&gt;**](Comment.md)
 
 ### Authorization
 
@@ -53,7 +54,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -146,7 +147,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **commentsPost**
-> commentsPost(communityId, contentId, text, parentId)
+> IdResponse commentsPost(communityId, contentId, text, parentId)
 
 Add comment
 
@@ -164,7 +165,8 @@ final String text = text_example; // String | Comment text
 final int parentId = 56; // int | ID of parent comment
 
 try {
-    api.commentsPost(communityId, contentId, text, parentId);
+    final response = api.commentsPost(communityId, contentId, text, parentId);
+    print(response);
 } catch on DioError (e) {
     print('Exception when calling CommentsApi->commentsPost: $e\n');
 }
@@ -181,7 +183,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**IdResponse**](IdResponse.md)
 
 ### Authorization
 
@@ -190,7 +192,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

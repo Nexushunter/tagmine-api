@@ -5,10 +5,10 @@ info:
     API for Tagmine.
     
     Use this to interact with content, tags, communities, and comments.
-
+    
     Join our [Discord](https://discord.gg/6kvy54QEg).
 
-  version: 0.0.1
+  version: 0.1.0
 servers:
   - url: "https://rg7zweii14.execute-api.us-east-1.amazonaws.com/dev"
   - url: "http://localhost:8080/dev"
@@ -21,6 +21,95 @@ tags:
   - name: comments
   - name: websocket
 components:
+  schemas:
+    authLoginResponse:
+      description: Authentication response
+      type: string
+    idResponse:
+      description: Response Containing an ID
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID of newly created entity
+      required:
+        - id
+    comment:
+      description: A comment on a piece of content
+      type: object
+      properties:
+        id:
+          type: integer
+        text:
+          type: string
+        community_id:
+          type: integer
+        content_id:
+          type: integer
+        parent_id:
+          type: integer
+      required:
+        - id
+        - text
+        - community_id
+        - content_id
+    community:
+      description: A user community
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        num_comments:
+          type: integer
+        description:
+          type: string
+      required:
+        - id
+        - name
+        - num_comments
+        - description
+    tag:
+      description: A content tag
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+      required:
+        - id
+        - name
+    content:
+      description: Content Entry
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        url:
+          type: string
+        user_id:
+          type: string
+        username:
+          type: string
+        communities:
+          type: array
+          items:
+            $ref: "#/components/schemas/community"
+        tags:
+          type: array
+          items:
+            $ref: "#/components/schemas/tag"
+      required:
+        - id
+        - title
+        - url
+        - user_id
+        - username
+        - communities
   securitySchemes:
     bearerAuth:
       type: http
@@ -42,7 +131,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Successful operation
   /content:
     get:
@@ -74,8 +163,14 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/content"
     post:
       tags:
         - content
@@ -113,8 +208,12 @@ paths:
               required:
                 - title
       responses:
-        '200':
+        "200":
           description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/idResponse'
   /content/{id}:
     get:
       tags:
@@ -129,8 +228,12 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/content'
     put:
       tags:
         - content
@@ -172,7 +275,7 @@ paths:
                   items:
                     type: integer
       responses:
-        '200':
+        "200":
           description: Successful operation
     delete:
       tags:
@@ -189,7 +292,7 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful operation
   /tag:
     get:
@@ -203,8 +306,14 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/tag'
     post:
       tags:
         - tags
@@ -223,8 +332,12 @@ paths:
               required:
                 - name
       responses:
-        '200':
+        "200":
           description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/idResponse'
   /tag/{id}:
     get:
       tags:
@@ -239,8 +352,12 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/tag'
     delete:
       tags:
         - tags
@@ -256,7 +373,7 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful operation
   /community:
     get:
@@ -270,8 +387,14 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/community'
     post:
       tags:
         - community
@@ -294,8 +417,12 @@ paths:
                 - name
                 - description
       responses:
-        '200':
+        "200":
           description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/idResponse'
   /community/{id}:
     get:
       tags:
@@ -310,8 +437,12 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/community'
     put:
       tags:
         - community
@@ -338,7 +469,7 @@ paths:
               required:
                 - description
       responses:
-        '200':
+        "200":
           description: Successful operation
     delete:
       tags:
@@ -355,7 +486,7 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful operation
   /comments:
     get:
@@ -377,8 +508,14 @@ paths:
           schema:
             type: integer
       responses:
-        '200':
+        "200":
           description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/comment'
     post:
       tags:
         - comments
@@ -408,8 +545,12 @@ paths:
                 - content_id
                 - text
       responses:
-        '200':
+        "200":
           description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/idResponse'
   /comments/{id}:
     put:
       tags:
@@ -437,7 +578,7 @@ paths:
               required:
                 - text
       responses:
-        '200':
+        "200":
           description: Successful operation
     delete:
       tags:
@@ -454,7 +595,7 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful operation
   /auth/register:
     post:
@@ -481,8 +622,12 @@ paths:
                 - email
                 - password
       responses:
-        '200':
+        "200":
           description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/idResponse"
   /auth/login:
     post:
       tags:
@@ -504,8 +649,12 @@ paths:
                 - username
                 - password
       responses:
-        '200':
+        "200":
           description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/authLoginResponse"
   /auth/forgot_password:
     get:
       tags:
@@ -519,7 +668,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Successful operation
   /auth/reset_password:
     get:
@@ -540,7 +689,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Successful operation
   /user/subscribe:
     post:
@@ -562,7 +711,7 @@ paths:
                   description: ID of tag
                   type: integer
       responses:
-        '200':
+        "200":
           description: Successful operation
   /user/feed:
     get:
@@ -579,7 +728,7 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful operation
   /user/notifications:
     head:
@@ -589,7 +738,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        '200':
+        "200":
           description: Successful operation
           headers:
             X-Notification-Count:
@@ -610,7 +759,7 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful operation
   /user/{id}/posts:
     get:
@@ -632,8 +781,16 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  anyOf:
+                    - $ref: '#/components/schemas/content'
+                    - $ref: '#/components/schemas/comment'
   /user/{id}/comments:
     get:
       tags:
@@ -654,5 +811,11 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/comment'

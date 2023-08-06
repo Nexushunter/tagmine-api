@@ -1,7 +1,7 @@
 name: tagmine_api_client
 version: 1.0.0
 description: OAS generated dart api for tagmine.ca
-homepage: homepage
+homepage: https://github.com/Nexushunter/tagmine-api/tree/main/clients/dart
 
 environment:
   sdk: '>=2.15.0 <3.0.0'
