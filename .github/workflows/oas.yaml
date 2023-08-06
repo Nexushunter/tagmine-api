@@ -5,6 +5,7 @@ on:
     branches-ignore:
       - main
     paths:
+      - '.github/workflows/oas.yaml'
       - 'lib/tagmine_api.dart'
       - 'pubspec.yaml'
       - 'build.yaml'
