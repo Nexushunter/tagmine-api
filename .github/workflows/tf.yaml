@@ -53,10 +53,10 @@ jobs:
           # Copied from section above https://github.com/marketplace/actions/hashicorp-setup-terraform#inputs
           script: |
             // 1. Retrieve existing bot comments for the PR
-            const { data: comments } = await github.rest.pulls.listComments({
+            const { data: comments } = await github.rest.issues.listComments({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              pull_number: process.env.PR,
+              issue_number: process.env.PR,
             })
             const botComment = comments.find(comment => {
               return comment.user.type === 'Bot' && comment.body.includes('Terraform Format and Style')
@@ -88,15 +88,15 @@ jobs:
 
             // 3. If we have a comment, update it, otherwise create a new one
             if (botComment) {
-              github.rest.pulls.updateComment({
+              github.rest.issues.updateComment({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 comment_id: botComment.id,
                 body: output
               })
             } else {
-              github.rest.pulls.createComment({
-                pull_number: process.env.PR,
+              github.rest.issues.createComment({
+                issue_number: process.env.PR,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 body: output
