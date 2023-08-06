@@ -31,10 +31,13 @@ jobs:
           terraform_wrapper: true
           terraform_version: 1.5.3
       - name: Init
+        id: init
         run: terraform init
       - name: Format
+        id: fmt
         run: terraform fmt -check
       - name: Validate
+        id: validate
         run: terraform validate
       - name: Plan
         id: plan
@@ -44,15 +47,16 @@ jobs:
         if: ${{ success() }}
         env:
           PLAN: "Terraform\n${{ steps.plan.outputs.stdout }}"
+          PR: ${{ github.event.number }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           # Copied from section above https://github.com/marketplace/actions/hashicorp-setup-terraform#inputs
           script: |
             // 1. Retrieve existing bot comments for the PR
-            const { data: comments } = await github.rest.issues.listComments({
+            const { data: comments } = await github.rest.pulls.listComments({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: context.issue.number,
+              pull_number: process.env.PR,
             })
             const botComment = comments.find(comment => {
               return comment.user.type === 'Bot' && comment.body.includes('Terraform Format and Style')
@@ -84,15 +88,15 @@ jobs:
 
             // 3. If we have a comment, update it, otherwise create a new one
             if (botComment) {
-              github.rest.issues.updateComment({
+              github.rest.pulls.updateComment({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 comment_id: botComment.id,
                 body: output
               })
             } else {
-              github.rest.issues.createComment({
-                issue_number: context.issue.number,
+              github.rest.pulls.createComment({
+                pull_number: process.env.PR,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 body: output
