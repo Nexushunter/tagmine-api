@@ -1,6 +1,6 @@
 name: "Terraform"
 on:
-  push:
+  pull_request:
     branches-ignore:
       - main
     paths:
