@@ -9,10 +9,11 @@ on:
       - 'pubspec.yaml'
       - 'build.yaml'
       - 'openapi.yaml'
+      - 'clients/**/*'
 
 jobs:
-  ci:
-    name: CI
+  ci-dart:
+    name: Dart
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
