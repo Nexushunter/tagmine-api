@@ -44,7 +44,7 @@ jobs:
         env:
           PLAN: "Terraform\n${{ steps.plan.outputs.stdout }}"
         with:
-          github-token: ${{ secret.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           # Copied from section above https://github.com/marketplace/actions/hashicorp-setup-terraform#inputs
           script: |
             // 1. Retrieve existing bot comments for the PR
