@@ -23,6 +23,7 @@ resource "aws_s3_bucket" "public_bucket" {
 
   tags = {
     use = "oss"
+    repo = "tagmine-api"
   }
 }
 
@@ -72,7 +73,7 @@ resource "aws_s3_object" "oas_spec" {
 
 resource "aws_s3_object" "logo" {
   bucket = aws_s3_bucket.public_bucket.id
-  key    = "logo.png"
+  key    = "logo.jpg"
   source = data.local_file.logo.filename
 
   tags = {
@@ -88,5 +89,5 @@ data "local_file" "oas_spec" {
 }
 
 data "local_file" "logo" {
-  filename = "${path.root}/../logo.png"
+  filename = "${path.root}/../logo.jpg"
 }
