@@ -1,6 +1,6 @@
 name: "Terraform"
 on:
-  pull_request:
+  push:
     branches-ignore:
       - main
     paths:
@@ -47,12 +47,24 @@ jobs:
         if: ${{ success() }}
         env:
           PLAN: "Terraform\n${{ steps.plan.outputs.stdout }}"
-          PR: ${{ github.ref }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           # Copied from section above https://github.com/marketplace/actions/hashicorp-setup-terraform#inputs
           script: |
-            const id = process.env.PR.replace('ref/pull/','').replace('/merge','');
+            let id;
+            if (context.issue.number) {
+                // Return issue number if present
+                id = context.issue.number;
+            } else {
+              // Otherwise return issue number from commit
+              id = (
+              await github.rest.repos.listPullRequestsAssociatedWithCommit({
+              commit_sha: context.sha,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            })
+              ).data[0].number;
+            }
             // 1. Retrieve existing bot comments for the PR
             const { data: comments } = await github.rest.issues.listComments({
               owner: context.repo.owner,
