@@ -41,7 +41,7 @@ jobs:
         run: terraform plan
       - name: Submit Comment to PR
         uses: actions/github-script@v6
-        if: github.event_name == 'pull_request'
+        if: ${{ success() }}
         env:
           PLAN: "Terraform\n${{ steps.plan.outputs.stdout }}"
         with:

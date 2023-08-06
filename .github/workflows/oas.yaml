@@ -31,4 +31,4 @@ jobs:
       - name: Apply formatting to Generated code
         run: dart format ./clients/dart/
       - name: Verify Changes were commited
-        run: if [[ -z git status --porcelain ]]; then exit 0; else exit 1; fi
+        run: ./scripts/verify_oas_changes.sh
