@@ -22,7 +22,7 @@ resource "aws_s3_bucket" "public_bucket" {
   bucket = "tagmine-api"
 
   tags = {
-    use = "oss"
+    use  = "oss"
     repo = "tagmine-api"
   }
 }

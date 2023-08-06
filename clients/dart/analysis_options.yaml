@@ -8,3 +8,5 @@ analyzer:
   errors:
     deprecated_member_use_from_same_package: ignore
     deprecated_member_use: info
+    # TODO: This will need to be addressed as these files are auto generated
+    unused_import: info

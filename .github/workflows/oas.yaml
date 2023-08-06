@@ -12,15 +12,21 @@ on:
 
 jobs:
   ci:
+    name: CI
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: dart-lang/setup-dart@v1.5.0
         with:
           sdk: stable
+      - uses: subosito/flutter-setup@v2
+        with:
+          channel: stable
       - name: Install Dependencies
         run: dart pub get
       - name: Run generation
         run: dart run build_runner build --delete-conflicting-outputs
+      - name: Apply formatting to Generated code
+        run: dart format ./clients/dart/
       - name: Verify Changes were commited
         run: if [[ -z git status --porcelain ]]; then exit 0; else exit 1; fi
