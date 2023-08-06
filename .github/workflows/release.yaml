@@ -19,10 +19,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: hashicorp/setup-terraform@v2
+      - uses: hashicorp/setup-terraform@v2.0.3
         with:
           terraform_wrapper: true
-          terraform_version: 1.5.5
+          terraform_version: 1.5.3
       - run: terraform init
       - run: terraform plan
       - run: terraform apply -auto-approve
