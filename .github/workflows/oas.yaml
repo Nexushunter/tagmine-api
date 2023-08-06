@@ -4,13 +4,6 @@ on:
   push:
     branches-ignore:
       - main
-    paths:
-      - '.github/workflows/oas.yaml'
-      - 'lib/tagmine_api.dart'
-      - 'pubspec.yaml'
-      - 'build.yaml'
-      - 'openapi.yaml'
-      - 'clients/**/*'
 
 jobs:
   ci-dart:
