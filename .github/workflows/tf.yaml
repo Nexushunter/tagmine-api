@@ -47,7 +47,7 @@ jobs:
         if: ${{ success() }}
         env:
           PLAN: "Terraform\n${{ steps.plan.outputs.stdout }}"
-          PR: ${{ github.event.number }}
+          PR: "${{ github.event.number }}"
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           # Copied from section above https://github.com/marketplace/actions/hashicorp-setup-terraform#inputs
