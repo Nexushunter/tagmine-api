@@ -10,7 +10,7 @@ clean:
 
 fmt:
 	dart format ./
-	terraform -chdir=infrastrcture fmt
+	terraform -chdir=infrastructure fmt
 
 validate:
 	dart analyze --fatal-warnings

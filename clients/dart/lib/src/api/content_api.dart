@@ -13,7 +13,6 @@ import 'package:tagmine_api_client/src/model/content.dart';
 import 'package:tagmine_api_client/src/model/id_response.dart';
 
 class ContentApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -21,7 +20,7 @@ class ContentApi {
   const ContentApi(this._dio, this._serializers);
 
   /// List content
-  /// 
+  ///
   ///
   /// Parameters:
   /// * [communityId] - ID of community
@@ -37,7 +36,7 @@ class ContentApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<Content>] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<BuiltList<Content>>> contentGet({ 
+  Future<Response<BuiltList<Content>>> contentGet({
     int? communityId,
     int? tagId,
     String? text,
@@ -63,10 +62,18 @@ class ContentApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (communityId != null) r'community_id': encodeQueryParameter(_serializers, communityId, const FullType(int)),
-      if (tagId != null) r'tag_id': encodeQueryParameter(_serializers, tagId, const FullType(int)),
-      if (text != null) r'text': encodeQueryParameter(_serializers, text, const FullType(String)),
-      if (offset != null) r'offset': encodeQueryParameter(_serializers, offset, const FullType(int)),
+      if (communityId != null)
+        r'community_id': encodeQueryParameter(
+            _serializers, communityId, const FullType(int)),
+      if (tagId != null)
+        r'tag_id':
+            encodeQueryParameter(_serializers, tagId, const FullType(int)),
+      if (text != null)
+        r'text':
+            encodeQueryParameter(_serializers, text, const FullType(String)),
+      if (offset != null)
+        r'offset':
+            encodeQueryParameter(_serializers, offset, const FullType(int)),
     };
 
     final _response = await _dio.request<Object>(
@@ -82,11 +89,12 @@ class ContentApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(Content)]),
-      ) as BuiltList<Content>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(BuiltList, [FullType(Content)]),
+            ) as BuiltList<Content>;
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -110,7 +118,7 @@ class ContentApi {
   }
 
   /// Delete content
-  /// 
+  ///
   ///
   /// Parameters:
   /// * [id] - ID of content
@@ -123,7 +131,7 @@ class ContentApi {
   ///
   /// Returns a [Future]
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> contentIdDelete({ 
+  Future<Response<void>> contentIdDelete({
     required int id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -163,7 +171,7 @@ class ContentApi {
   }
 
   /// Get content by ID
-  /// 
+  ///
   ///
   /// Parameters:
   /// * [id] - ID of content
@@ -176,7 +184,7 @@ class ContentApi {
   ///
   /// Returns a [Future] containing a [Response] with a [Content] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<Content>> contentIdGet({ 
+  Future<Response<Content>> contentIdGet({
     required int id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -210,11 +218,12 @@ class ContentApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Content),
-      ) as Content;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(Content),
+            ) as Content;
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -238,7 +247,7 @@ class ContentApi {
   }
 
   /// Update content
-  /// 
+  ///
   ///
   /// Parameters:
   /// * [id] - ID of content
@@ -255,7 +264,7 @@ class ContentApi {
   ///
   /// Returns a [Future]
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> contentIdPut({ 
+  Future<Response<void>> contentIdPut({
     required int id,
     BuiltList<int>? removedTags,
     BuiltList<int>? removedCommunity,
@@ -292,15 +301,38 @@ class ContentApi {
 
     try {
       _bodyData = <String, dynamic>{
-        if (removedTags != null) r'removed_tags': encodeCollectionQueryParameter<int>(_serializers, removedTags, const FullType(BuiltList, [FullType(int)]), format: ListFormat.csv,),
-        if (removedCommunity != null) r'removed_community': encodeCollectionQueryParameter<int>(_serializers, removedCommunity, const FullType(BuiltList, [FullType(int)]), format: ListFormat.csv,),
-        if (addedTags != null) r'added_tags': encodeCollectionQueryParameter<int>(_serializers, addedTags, const FullType(BuiltList, [FullType(int)]), format: ListFormat.csv,),
-        if (addedCommunity != null) r'added_community': encodeCollectionQueryParameter<int>(_serializers, addedCommunity, const FullType(BuiltList, [FullType(int)]), format: ListFormat.csv,),
+        if (removedTags != null)
+          r'removed_tags': encodeCollectionQueryParameter<int>(
+            _serializers,
+            removedTags,
+            const FullType(BuiltList, [FullType(int)]),
+            format: ListFormat.csv,
+          ),
+        if (removedCommunity != null)
+          r'removed_community': encodeCollectionQueryParameter<int>(
+            _serializers,
+            removedCommunity,
+            const FullType(BuiltList, [FullType(int)]),
+            format: ListFormat.csv,
+          ),
+        if (addedTags != null)
+          r'added_tags': encodeCollectionQueryParameter<int>(
+            _serializers,
+            addedTags,
+            const FullType(BuiltList, [FullType(int)]),
+            format: ListFormat.csv,
+          ),
+        if (addedCommunity != null)
+          r'added_community': encodeCollectionQueryParameter<int>(
+            _serializers,
+            addedCommunity,
+            const FullType(BuiltList, [FullType(int)]),
+            format: ListFormat.csv,
+          ),
       };
-
-    } catch(error, stackTrace) {
+    } catch (error, stackTrace) {
       throw DioError(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -323,7 +355,7 @@ class ContentApi {
   }
 
   /// Add content
-  /// 
+  ///
   ///
   /// Parameters:
   /// * [title] - Title of the post
@@ -341,7 +373,7 @@ class ContentApi {
   ///
   /// Returns a [Future] containing a [Response] with a [IdResponse] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<IdResponse>> contentPost({ 
+  Future<Response<IdResponse>> contentPost({
     required String title,
     String? description,
     String? url,
@@ -379,17 +411,35 @@ class ContentApi {
 
     try {
       _bodyData = <String, dynamic>{
-        r'title': encodeQueryParameter(_serializers, title, const FullType(String)),
-        if (description != null) r'description': encodeQueryParameter(_serializers, description, const FullType(String)),
-        if (url != null) r'url': encodeQueryParameter(_serializers, url, const FullType(String)),
-        if (thumbnail != null) r'thumbnail': encodeQueryParameter(_serializers, thumbnail, const FullType(String)),
-        if (tags != null) r'tags': encodeCollectionQueryParameter<int>(_serializers, tags, const FullType(BuiltList, [FullType(int)]), format: ListFormat.csv,),
-        if (community != null) r'community': encodeCollectionQueryParameter<int>(_serializers, community, const FullType(BuiltList, [FullType(int)]), format: ListFormat.csv,),
+        r'title':
+            encodeQueryParameter(_serializers, title, const FullType(String)),
+        if (description != null)
+          r'description': encodeQueryParameter(
+              _serializers, description, const FullType(String)),
+        if (url != null)
+          r'url':
+              encodeQueryParameter(_serializers, url, const FullType(String)),
+        if (thumbnail != null)
+          r'thumbnail': encodeQueryParameter(
+              _serializers, thumbnail, const FullType(String)),
+        if (tags != null)
+          r'tags': encodeCollectionQueryParameter<int>(
+            _serializers,
+            tags,
+            const FullType(BuiltList, [FullType(int)]),
+            format: ListFormat.csv,
+          ),
+        if (community != null)
+          r'community': encodeCollectionQueryParameter<int>(
+            _serializers,
+            community,
+            const FullType(BuiltList, [FullType(int)]),
+            format: ListFormat.csv,
+          ),
       };
-
-    } catch(error, stackTrace) {
+    } catch (error, stackTrace) {
       throw DioError(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -412,11 +462,12 @@ class ContentApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(IdResponse),
-      ) as IdResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(IdResponse),
+            ) as IdResponse;
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -438,5 +489,4 @@ class ContentApi {
       extra: _response.extra,
     );
   }
-
 }

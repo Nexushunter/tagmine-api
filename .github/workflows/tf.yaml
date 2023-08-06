@@ -20,7 +20,7 @@ env:
 
 jobs:
   ci:
-    name: 'Workflow'
+    name: 'CI'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

@@ -1,7 +1,6 @@
 import 'package:test/test.dart';
 import 'package:tagmine_api_client/tagmine_api_client.dart';
 
-
 /// tests for AuthApi
 void main() {
   final instance = TagmineApiClient().getAuthApi();
@@ -34,6 +33,5 @@ void main() {
     test('test authResetPasswordGet', () async {
       // TODO
     });
-
   });
 }

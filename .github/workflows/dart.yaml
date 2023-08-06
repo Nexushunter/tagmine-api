@@ -1,0 +1,43 @@
+name: Dart
+
+on:
+  push:
+    branches-ignore:
+      - main
+    paths:
+    - '**/*.dart'
+
+jobs:
+  ci-client:
+    name: Verify Generated Client
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: clients/dart
+    steps:
+      - uses: actions/checkout@v3
+      - uses: dart-lang/setup-dart@v1.5.0
+        with:
+          sdk: stable
+      - name: Install Dependencies
+        run: dart pub get
+      - name: Check format
+        run: dart format ./ --set-exit-if-changed
+      - name: Run analyzer
+        run: dart analyze --fatal-warnings
+      - name: Run tests
+        run: dart test
+  ci-main:
+    name: Verify setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: dart-lang/setup-dart@v1.5.0
+        with:
+          sdk: stable
+      - name: Install Dependencies
+        run: dart pub get
+      - name: Check format
+        run: dart format ./ --set-exit-if-changed
+      - name: Run analyzer
+        run: dart analyze --fatal-warnings
