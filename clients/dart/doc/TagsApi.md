@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **tagGet**
-> tagGet(text)
+> BuiltList<Tag> tagGet(text)
 
 Get tags
 
@@ -28,7 +28,8 @@ final api = TagmineApiClient().getTagsApi();
 final String text = text_example; // String | Text to search for
 
 try {
-    api.tagGet(text);
+    final response = api.tagGet(text);
+    print(response);
 } catch on DioError (e) {
     print('Exception when calling TagsApi->tagGet: $e\n');
 }
@@ -42,7 +43,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**BuiltList&lt;Tag&gt;**](Tag.md)
 
 ### Authorization
 
@@ -51,7 +52,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -99,7 +100,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **tagIdGet**
-> tagIdGet(id)
+> Tag tagIdGet(id)
 
 Get tag by ID
 
@@ -111,7 +112,8 @@ final api = TagmineApiClient().getTagsApi();
 final int id = 789; // int | ID of content
 
 try {
-    api.tagIdGet(id);
+    final response = api.tagIdGet(id);
+    print(response);
 } catch on DioError (e) {
     print('Exception when calling TagsApi->tagIdGet: $e\n');
 }
@@ -125,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**Tag**](Tag.md)
 
 ### Authorization
 
@@ -134,12 +136,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **tagPost**
-> tagPost(name)
+> IdResponse tagPost(name)
 
 Add tag
 
@@ -154,7 +156,8 @@ final api = TagmineApiClient().getTagsApi();
 final String name = name_example; // String | Name of tag
 
 try {
-    api.tagPost(name);
+    final response = api.tagPost(name);
+    print(response);
 } catch on DioError (e) {
     print('Exception when calling TagsApi->tagPost: $e\n');
 }
@@ -168,7 +171,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**IdResponse**](IdResponse.md)
 
 ### Authorization
 
@@ -177,7 +180,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

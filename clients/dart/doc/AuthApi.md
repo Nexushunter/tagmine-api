@@ -56,7 +56,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **authLoginPost**
-> authLoginPost(username, password)
+> String authLoginPost(username, password)
 
 Login to account
 
@@ -69,7 +69,8 @@ final String username = username_example; // String | Username
 final String password = password_example; // String | Password
 
 try {
-    api.authLoginPost(username, password);
+    final response = api.authLoginPost(username, password);
+    print(response);
 } catch on DioError (e) {
     print('Exception when calling AuthApi->authLoginPost: $e\n');
 }
@@ -84,7 +85,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -93,12 +94,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **authRegisterPost**
-> authRegisterPost(username, email, password)
+> IdResponse authRegisterPost(username, email, password)
 
 Register new account
 
@@ -112,7 +113,8 @@ final String email = email_example; // String | E-mail
 final String password = password_example; // String | Password
 
 try {
-    api.authRegisterPost(username, email, password);
+    final response = api.authRegisterPost(username, email, password);
+    print(response);
 } catch on DioError (e) {
     print('Exception when calling AuthApi->authRegisterPost: $e\n');
 }
@@ -128,7 +130,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**IdResponse**](IdResponse.md)
 
 ### Authorization
 
@@ -137,7 +139,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

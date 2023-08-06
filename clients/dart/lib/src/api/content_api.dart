@@ -9,6 +9,8 @@ import 'package:dio/dio.dart';
 
 import 'package:built_collection/built_collection.dart';
 import 'package:tagmine_api_client/src/api_util.dart';
+import 'package:tagmine_api_client/src/model/content.dart';
+import 'package:tagmine_api_client/src/model/id_response.dart';
 
 class ContentApi {
 
@@ -33,9 +35,9 @@ class ContentApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future]
+  /// Returns a [Future] containing a [Response] with a [BuiltList<Content>] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> contentGet({ 
+  Future<Response<BuiltList<Content>>> contentGet({ 
     int? communityId,
     int? tagId,
     String? text,
@@ -76,7 +78,35 @@ class ContentApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    return _response;
+    BuiltList<Content>? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(BuiltList, [FullType(Content)]),
+      ) as BuiltList<Content>;
+
+    } catch (error, stackTrace) {
+      throw DioError(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioErrorType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<BuiltList<Content>>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
   }
 
   /// Delete content
@@ -144,9 +174,9 @@ class ContentApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future]
+  /// Returns a [Future] containing a [Response] with a [Content] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> contentIdGet({ 
+  Future<Response<Content>> contentIdGet({ 
     required int id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -176,7 +206,35 @@ class ContentApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    return _response;
+    Content? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(Content),
+      ) as Content;
+
+    } catch (error, stackTrace) {
+      throw DioError(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioErrorType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<Content>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
   }
 
   /// Update content
@@ -281,9 +339,9 @@ class ContentApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future]
+  /// Returns a [Future] containing a [Response] with a [IdResponse] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> contentPost({ 
+  Future<Response<IdResponse>> contentPost({ 
     required String title,
     String? description,
     String? url,
@@ -350,7 +408,35 @@ class ContentApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    return _response;
+    IdResponse? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(IdResponse),
+      ) as IdResponse;
+
+    } catch (error, stackTrace) {
+      throw DioError(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioErrorType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<IdResponse>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
   }
 
 }

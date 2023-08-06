@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **contentGet**
-> contentGet(communityId, tagId, text, offset)
+> BuiltList<Content> contentGet(communityId, tagId, text, offset)
 
 List content
 
@@ -32,7 +32,8 @@ final String text = text_example; // String | Text to search for
 final int offset = 789; // int | The number of items to skip
 
 try {
-    api.contentGet(communityId, tagId, text, offset);
+    final response = api.contentGet(communityId, tagId, text, offset);
+    print(response);
 } catch on DioError (e) {
     print('Exception when calling ContentApi->contentGet: $e\n');
 }
@@ -49,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**BuiltList&lt;Content&gt;**](Content.md)
 
 ### Authorization
 
@@ -58,7 +59,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -106,7 +107,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **contentIdGet**
-> contentIdGet(id)
+> Content contentIdGet(id)
 
 Get content by ID
 
@@ -118,7 +119,8 @@ final api = TagmineApiClient().getContentApi();
 final int id = 789; // int | ID of content
 
 try {
-    api.contentIdGet(id);
+    final response = api.contentIdGet(id);
+    print(response);
 } catch on DioError (e) {
     print('Exception when calling ContentApi->contentIdGet: $e\n');
 }
@@ -132,7 +134,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**Content**](Content.md)
 
 ### Authorization
 
@@ -141,7 +143,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -197,7 +199,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **contentPost**
-> contentPost(title, description, url, thumbnail, tags, community)
+> IdResponse contentPost(title, description, url, thumbnail, tags, community)
 
 Add content
 
@@ -217,7 +219,8 @@ final BuiltList<int> tags = ; // BuiltList<int> | One or more tag IDs
 final BuiltList<int> community = ; // BuiltList<int> | One or more community IDs
 
 try {
-    api.contentPost(title, description, url, thumbnail, tags, community);
+    final response = api.contentPost(title, description, url, thumbnail, tags, community);
+    print(response);
 } catch on DioError (e) {
     print('Exception when calling ContentApi->contentPost: $e\n');
 }
@@ -236,7 +239,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**IdResponse**](IdResponse.md)
 
 ### Authorization
 
@@ -245,7 +248,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
