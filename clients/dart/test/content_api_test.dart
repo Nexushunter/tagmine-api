@@ -1,7 +1,6 @@
 import 'package:test/test.dart';
 import 'package:tagmine_api_client/tagmine_api_client.dart';
 
-
 /// tests for ContentApi
 void main() {
   final instance = TagmineApiClient().getContentApi();
@@ -41,6 +40,5 @@ void main() {
     test('test contentPost', () async {
       // TODO
     });
-
   });
 }

@@ -13,25 +13,32 @@ part 'user_register_response.g.dart';
 /// Properties:
 /// * [id] - Newly created User ID
 @BuiltValue()
-abstract class UserRegisterResponse implements Built<UserRegisterResponse, UserRegisterResponseBuilder> {
+abstract class UserRegisterResponse
+    implements Built<UserRegisterResponse, UserRegisterResponseBuilder> {
   /// Newly created User ID
   @BuiltValueField(wireName: r'id')
   num? get id;
 
   UserRegisterResponse._();
 
-  factory UserRegisterResponse([void updates(UserRegisterResponseBuilder b)]) = _$UserRegisterResponse;
+  factory UserRegisterResponse([void updates(UserRegisterResponseBuilder b)]) =
+      _$UserRegisterResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UserRegisterResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UserRegisterResponse> get serializer => _$UserRegisterResponseSerializer();
+  static Serializer<UserRegisterResponse> get serializer =>
+      _$UserRegisterResponseSerializer();
 }
 
-class _$UserRegisterResponseSerializer implements PrimitiveSerializer<UserRegisterResponse> {
+class _$UserRegisterResponseSerializer
+    implements PrimitiveSerializer<UserRegisterResponse> {
   @override
-  final Iterable<Type> types = const [UserRegisterResponse, _$UserRegisterResponse];
+  final Iterable<Type> types = const [
+    UserRegisterResponse,
+    _$UserRegisterResponse
+  ];
 
   @override
   final String wireName = r'UserRegisterResponse';
@@ -56,7 +63,9 @@ class _$UserRegisterResponseSerializer implements PrimitiveSerializer<UserRegist
     UserRegisterResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -106,4 +115,3 @@ class _$UserRegisterResponseSerializer implements PrimitiveSerializer<UserRegist
     return result.build();
   }
 }
-

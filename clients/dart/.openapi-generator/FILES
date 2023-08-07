@@ -1,6 +1,5 @@
 .gitignore
 README.md
-analysis_options.yaml
 doc/AuthApi.md
 doc/Comment.md
 doc/CommentsApi.md

@@ -1,0 +1,27 @@
+name: OpenApi
+
+on:
+  push:
+    branches-ignore:
+      - main
+
+jobs:
+  ci-dart:
+    name: Dart
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: dart-lang/setup-dart@v1.5.0
+        with:
+          sdk: stable
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+      - name: Install Dependencies
+        run: dart pub get
+      - name: Run generation
+        run: dart run build_runner build --delete-conflicting-outputs
+      - name: Apply formatting to Generated code
+        run: dart format ./clients/dart/
+      - name: Verify Changes were commited
+        run: ./scripts/verify_oas_changes.sh

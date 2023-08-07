@@ -12,24 +12,28 @@ part 'content_or_comment.g.dart';
 /// ContentOrComment
 ///
 /// Properties:
-/// * [value] 
+/// * [value]
 @BuiltValue()
-abstract class ContentOrComment implements Built<ContentOrComment, ContentOrCommentBuilder> {
+abstract class ContentOrComment
+    implements Built<ContentOrComment, ContentOrCommentBuilder> {
   @BuiltValueField(wireName: r'value')
   UserIdPostsGet200ResponseInner? get value;
 
   ContentOrComment._();
 
-  factory ContentOrComment([void updates(ContentOrCommentBuilder b)]) = _$ContentOrComment;
+  factory ContentOrComment([void updates(ContentOrCommentBuilder b)]) =
+      _$ContentOrComment;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ContentOrCommentBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ContentOrComment> get serializer => _$ContentOrCommentSerializer();
+  static Serializer<ContentOrComment> get serializer =>
+      _$ContentOrCommentSerializer();
 }
 
-class _$ContentOrCommentSerializer implements PrimitiveSerializer<ContentOrComment> {
+class _$ContentOrCommentSerializer
+    implements PrimitiveSerializer<ContentOrComment> {
   @override
   final Iterable<Type> types = const [ContentOrComment, _$ContentOrComment];
 
@@ -56,7 +60,9 @@ class _$ContentOrCommentSerializer implements PrimitiveSerializer<ContentOrComme
     ContentOrComment object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -106,4 +112,3 @@ class _$ContentOrCommentSerializer implements PrimitiveSerializer<ContentOrComme
     return result.build();
   }
 }
-

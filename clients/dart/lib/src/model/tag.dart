@@ -11,8 +11,8 @@ part 'tag.g.dart';
 /// A content tag
 ///
 /// Properties:
-/// * [id] 
-/// * [name] 
+/// * [id]
+/// * [name]
 @BuiltValue()
 abstract class Tag implements Built<Tag, TagBuilder> {
   @BuiltValueField(wireName: r'id')
@@ -62,7 +62,9 @@ class _$TagSerializer implements PrimitiveSerializer<Tag> {
     Tag object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -119,4 +121,3 @@ class _$TagSerializer implements PrimitiveSerializer<Tag> {
     return result.build();
   }
 }
-

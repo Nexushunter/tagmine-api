@@ -1,7 +1,6 @@
 import 'package:test/test.dart';
 import 'package:tagmine_api_client/tagmine_api_client.dart';
 
-
 /// tests for MetadataApi
 void main() {
   final instance = TagmineApiClient().getMetadataApi();
@@ -13,6 +12,5 @@ void main() {
     test('test urlMetadataGet', () async {
       // TODO
     });
-
   });
 }
