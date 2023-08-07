@@ -18,6 +18,15 @@ import {
   id = "tagmine-api"
 }
 
+import {
+  to = aws_iam_user.tagmine-api-gha
+  id = "tagmine-api-gha"
+}
+
+resource "aws_iam_user" "tagmine-api-gha" {
+  name = "tagmine-api-gha"
+}
+
 resource "aws_s3_bucket" "public_bucket" {
   bucket = "tagmine-api"
 
@@ -54,6 +63,23 @@ data "aws_iam_policy_document" "public_access" {
       values   = ["yes"]
       variable = "s3:ExistingObjectTag/public"
     }
+  }
+  statement {
+    sid    = "GHA User Access"
+    effect = "Allow"
+    principals {
+      identifiers = [aws_iam_user.tagmine-api-gha.arn]
+      type        = "AWS"
+    }
+
+    actions = [
+      "s3:*"
+    ]
+
+    resources = [
+      "${aws_s3_bucket.public_bucket.arn}",
+      "${aws_s3_bucket.public_bucket.arn}/*"
+    ]
   }
 }
 
