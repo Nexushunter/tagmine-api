@@ -13,23 +13,27 @@ part 'auth_login_response.g.dart';
 /// Properties:
 /// * [token] - Current Session Token for the User
 @BuiltValue()
-abstract class AuthLoginResponse implements Built<AuthLoginResponse, AuthLoginResponseBuilder> {
+abstract class AuthLoginResponse
+    implements Built<AuthLoginResponse, AuthLoginResponseBuilder> {
   /// Current Session Token for the User
   @BuiltValueField(wireName: r'token')
   String? get token;
 
   AuthLoginResponse._();
 
-  factory AuthLoginResponse([void updates(AuthLoginResponseBuilder b)]) = _$AuthLoginResponse;
+  factory AuthLoginResponse([void updates(AuthLoginResponseBuilder b)]) =
+      _$AuthLoginResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(AuthLoginResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<AuthLoginResponse> get serializer => _$AuthLoginResponseSerializer();
+  static Serializer<AuthLoginResponse> get serializer =>
+      _$AuthLoginResponseSerializer();
 }
 
-class _$AuthLoginResponseSerializer implements PrimitiveSerializer<AuthLoginResponse> {
+class _$AuthLoginResponseSerializer
+    implements PrimitiveSerializer<AuthLoginResponse> {
   @override
   final Iterable<Type> types = const [AuthLoginResponse, _$AuthLoginResponse];
 
@@ -56,7 +60,9 @@ class _$AuthLoginResponseSerializer implements PrimitiveSerializer<AuthLoginResp
     AuthLoginResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -106,4 +112,3 @@ class _$AuthLoginResponseSerializer implements PrimitiveSerializer<AuthLoginResp
     return result.build();
   }
 }
-

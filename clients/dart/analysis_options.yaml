@@ -1,11 +1,12 @@
 analyzer:
   language:
+    strict-casts: true
     strict-inference: true
     strict-raw-types: true
-  strong-mode:
-    implicit-dynamic: false
-    implicit-casts: false
   exclude:
     - test/*.dart
   errors:
     deprecated_member_use_from_same_package: ignore
+    deprecated_member_use: info
+    # TODO: This will need to be addressed as these files are auto generated
+    unused_import: info

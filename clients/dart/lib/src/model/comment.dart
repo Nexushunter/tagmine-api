@@ -11,11 +11,11 @@ part 'comment.g.dart';
 /// A comment on a piece of content
 ///
 /// Properties:
-/// * [id] 
-/// * [text] 
-/// * [communityId] 
-/// * [contentId] 
-/// * [parentId] 
+/// * [id]
+/// * [text]
+/// * [communityId]
+/// * [contentId]
+/// * [parentId]
 @BuiltValue()
 abstract class Comment implements Built<Comment, CommentBuilder> {
   @BuiltValueField(wireName: r'id')
@@ -91,7 +91,9 @@ class _$CommentSerializer implements PrimitiveSerializer<Comment> {
     Comment object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -169,4 +171,3 @@ class _$CommentSerializer implements PrimitiveSerializer<Comment> {
     return result.build();
   }
 }
-

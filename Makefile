@@ -1,4 +1,4 @@
-.PHONY: gen clean
+.PHONY: gen clean fmt validate
 
 gen: clean
 	dart run build_runner build --delete-conflicting-outputs
@@ -7,3 +7,11 @@ gen: clean
 clean:
 	rm -rf .dart_tool
 	dart pub get
+
+fmt:
+	dart format ./
+	terraform -chdir=infrastructure fmt
+
+validate:
+	dart analyze --fatal-warnings
+	terraform -chdir=infrastructure validate
