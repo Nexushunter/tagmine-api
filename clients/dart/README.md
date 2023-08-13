@@ -84,6 +84,8 @@ Class | Method | HTTP request | Description
 [*ContentApi*](doc/ContentApi.md) | [**contentIdDelete**](doc/ContentApi.md#contentiddelete) | **DELETE** /content/{id} | Delete content
 [*ContentApi*](doc/ContentApi.md) | [**contentIdGet**](doc/ContentApi.md#contentidget) | **GET** /content/{id} | Get content by ID
 [*ContentApi*](doc/ContentApi.md) | [**contentIdPut**](doc/ContentApi.md#contentidput) | **PUT** /content/{id} | Update content
+[*ContentApi*](doc/ContentApi.md) | [**contentIdReactDelete**](doc/ContentApi.md#contentidreactdelete) | **DELETE** /content/{id}/react | Remove reaction from content
+[*ContentApi*](doc/ContentApi.md) | [**contentIdReactPost**](doc/ContentApi.md#contentidreactpost) | **POST** /content/{id}/react | Add reaction to content
 [*ContentApi*](doc/ContentApi.md) | [**contentPost**](doc/ContentApi.md#contentpost) | **POST** /content | Add content
 [*MetadataApi*](doc/MetadataApi.md) | [**urlMetadataGet**](doc/MetadataApi.md#urlmetadataget) | **GET** /url_metadata | Get title/thumbnail from URL
 [*TagsApi*](doc/TagsApi.md) | [**tagGet**](doc/TagsApi.md#tagget) | **GET** /tag | Get tags
