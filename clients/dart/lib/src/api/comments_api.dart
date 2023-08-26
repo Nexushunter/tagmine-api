@@ -13,6 +13,7 @@ import 'package:tagmine_api_client/src/model/comment.dart';
 import 'package:tagmine_api_client/src/model/id_response.dart';
 
 class CommentsApi {
+
   final Dio _dio;
 
   final Serializers _serializers;
@@ -20,7 +21,7 @@ class CommentsApi {
   const CommentsApi(this._dio, this._serializers);
 
   /// Get comments
-  ///
+  /// 
   ///
   /// Parameters:
   /// * [communityId] - ID of community
@@ -34,7 +35,7 @@ class CommentsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<Comment>] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<BuiltList<Comment>>> commentsGet({
+  Future<Response<BuiltList<Comment>>> commentsGet({ 
     required int communityId,
     required int contentId,
     CancelToken? cancelToken,
@@ -58,10 +59,8 @@ class CommentsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'community_id':
-          encodeQueryParameter(_serializers, communityId, const FullType(int)),
-      r'content_id':
-          encodeQueryParameter(_serializers, contentId, const FullType(int)),
+      r'community_id': encodeQueryParameter(_serializers, communityId, const FullType(int)),
+      r'content_id': encodeQueryParameter(_serializers, contentId, const FullType(int)),
     };
 
     final _response = await _dio.request<Object>(
@@ -77,12 +76,11 @@ class CommentsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(BuiltList, [FullType(Comment)]),
-            ) as BuiltList<Comment>;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(BuiltList, [FullType(Comment)]),
+      ) as BuiltList<Comment>;
+
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -106,7 +104,7 @@ class CommentsApi {
   }
 
   /// Delete comment
-  ///
+  /// 
   ///
   /// Parameters:
   /// * [id] - ID of comment
@@ -119,7 +117,7 @@ class CommentsApi {
   ///
   /// Returns a [Future]
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> commentsIdDelete({
+  Future<Response<void>> commentsIdDelete({ 
     required int id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -159,7 +157,7 @@ class CommentsApi {
   }
 
   /// Update comment
-  ///
+  /// 
   ///
   /// Parameters:
   /// * [id] - ID of comment
@@ -173,7 +171,7 @@ class CommentsApi {
   ///
   /// Returns a [Future]
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> commentsIdPut({
+  Future<Response<void>> commentsIdPut({ 
     required int id,
     required String text,
     CancelToken? cancelToken,
@@ -207,12 +205,12 @@ class CommentsApi {
 
     try {
       _bodyData = <String, dynamic>{
-        r'text':
-            encodeQueryParameter(_serializers, text, const FullType(String)),
+        r'text': encodeQueryParameter(_serializers, text, const FullType(String)),
       };
-    } catch (error, stackTrace) {
+
+    } catch(error, stackTrace) {
       throw DioError(
-        requestOptions: _options.compose(
+         requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -235,7 +233,7 @@ class CommentsApi {
   }
 
   /// Add comment
-  ///
+  /// 
   ///
   /// Parameters:
   /// * [communityId] - ID of community
@@ -251,7 +249,7 @@ class CommentsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [IdResponse] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<IdResponse>> commentsPost({
+  Future<Response<IdResponse>> commentsPost({ 
     required int communityId,
     required int contentId,
     required String text,
@@ -287,19 +285,15 @@ class CommentsApi {
 
     try {
       _bodyData = <String, dynamic>{
-        r'community_id': encodeQueryParameter(
-            _serializers, communityId, const FullType(int)),
-        r'content_id':
-            encodeQueryParameter(_serializers, contentId, const FullType(int)),
-        r'text':
-            encodeQueryParameter(_serializers, text, const FullType(String)),
-        if (parentId != null)
-          r'parent_id':
-              encodeQueryParameter(_serializers, parentId, const FullType(int)),
+        r'community_id': encodeQueryParameter(_serializers, communityId, const FullType(int)),
+        r'content_id': encodeQueryParameter(_serializers, contentId, const FullType(int)),
+        r'text': encodeQueryParameter(_serializers, text, const FullType(String)),
+        if (parentId != null) r'parent_id': encodeQueryParameter(_serializers, parentId, const FullType(int)),
       };
-    } catch (error, stackTrace) {
+
+    } catch(error, stackTrace) {
       throw DioError(
-        requestOptions: _options.compose(
+         requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -322,12 +316,11 @@ class CommentsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(IdResponse),
-            ) as IdResponse;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(IdResponse),
+      ) as IdResponse;
+
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -349,4 +342,5 @@ class CommentsApi {
       extra: _response.extra,
     );
   }
+
 }

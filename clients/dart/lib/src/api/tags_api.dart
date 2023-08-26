@@ -13,6 +13,7 @@ import 'package:tagmine_api_client/src/model/id_response.dart';
 import 'package:tagmine_api_client/src/model/tag.dart';
 
 class TagsApi {
+
   final Dio _dio;
 
   final Serializers _serializers;
@@ -20,7 +21,7 @@ class TagsApi {
   const TagsApi(this._dio, this._serializers);
 
   /// Get tags
-  ///
+  /// 
   ///
   /// Parameters:
   /// * [text] - Text to search for
@@ -33,7 +34,7 @@ class TagsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<Tag>] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<BuiltList<Tag>>> tagGet({
+  Future<Response<BuiltList<Tag>>> tagGet({ 
     String? text,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -56,9 +57,7 @@ class TagsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (text != null)
-        r'text':
-            encodeQueryParameter(_serializers, text, const FullType(String)),
+      if (text != null) r'text': encodeQueryParameter(_serializers, text, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -74,12 +73,11 @@ class TagsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(BuiltList, [FullType(Tag)]),
-            ) as BuiltList<Tag>;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(BuiltList, [FullType(Tag)]),
+      ) as BuiltList<Tag>;
+
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -103,7 +101,7 @@ class TagsApi {
   }
 
   /// Delete tag
-  ///
+  /// 
   ///
   /// Parameters:
   /// * [id] - ID of tag
@@ -116,7 +114,7 @@ class TagsApi {
   ///
   /// Returns a [Future]
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> tagIdDelete({
+  Future<Response<void>> tagIdDelete({ 
     required int id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -156,7 +154,7 @@ class TagsApi {
   }
 
   /// Get tag by ID
-  ///
+  /// 
   ///
   /// Parameters:
   /// * [id] - ID of content
@@ -169,7 +167,7 @@ class TagsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [Tag] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<Tag>> tagIdGet({
+  Future<Response<Tag>> tagIdGet({ 
     required int id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -203,12 +201,11 @@ class TagsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(Tag),
-            ) as Tag;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(Tag),
+      ) as Tag;
+
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -232,7 +229,7 @@ class TagsApi {
   }
 
   /// Add tag
-  ///
+  /// 
   ///
   /// Parameters:
   /// * [name] - Name of tag
@@ -245,7 +242,7 @@ class TagsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [IdResponse] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<IdResponse>> tagPost({
+  Future<Response<IdResponse>> tagPost({ 
     required String name,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -278,12 +275,12 @@ class TagsApi {
 
     try {
       _bodyData = <String, dynamic>{
-        r'name':
-            encodeQueryParameter(_serializers, name, const FullType(String)),
+        r'name': encodeQueryParameter(_serializers, name, const FullType(String)),
       };
-    } catch (error, stackTrace) {
+
+    } catch(error, stackTrace) {
       throw DioError(
-        requestOptions: _options.compose(
+         requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -306,12 +303,11 @@ class TagsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(IdResponse),
-            ) as IdResponse;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(IdResponse),
+      ) as IdResponse;
+
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -333,4 +329,5 @@ class TagsApi {
       extra: _response.extra,
     );
   }
+
 }

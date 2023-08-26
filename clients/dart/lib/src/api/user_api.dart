@@ -13,6 +13,7 @@ import 'package:tagmine_api_client/src/model/comment.dart';
 import 'package:tagmine_api_client/src/model/user_id_posts_get200_response_inner.dart';
 
 class UserApi {
+
   final Dio _dio;
 
   final Serializers _serializers;
@@ -20,7 +21,7 @@ class UserApi {
   const UserApi(this._dio, this._serializers);
 
   /// Retrieve posts from subscribed to tags and communities.
-  ///
+  /// 
   ///
   /// Parameters:
   /// * [offset] - The number of items to skip
@@ -33,7 +34,7 @@ class UserApi {
   ///
   /// Returns a [Future]
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> userFeedGet({
+  Future<Response<void>> userFeedGet({ 
     int? offset,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -62,9 +63,7 @@ class UserApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (offset != null)
-        r'offset':
-            encodeQueryParameter(_serializers, offset, const FullType(int)),
+      if (offset != null) r'offset': encodeQueryParameter(_serializers, offset, const FullType(int)),
     };
 
     final _response = await _dio.request<Object>(
@@ -80,7 +79,7 @@ class UserApi {
   }
 
   /// Get comments by user ID.
-  ///
+  /// 
   ///
   /// Parameters:
   /// * [id] - ID of user
@@ -94,7 +93,7 @@ class UserApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<Comment>] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<BuiltList<Comment>>> userIdCommentsGet({
+  Future<Response<BuiltList<Comment>>> userIdCommentsGet({ 
     required int id,
     int? offset,
     CancelToken? cancelToken,
@@ -104,8 +103,7 @@ class UserApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path =
-        r'/user/{id}/comments'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/user/{id}/comments'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -119,9 +117,7 @@ class UserApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (offset != null)
-        r'offset':
-            encodeQueryParameter(_serializers, offset, const FullType(int)),
+      if (offset != null) r'offset': encodeQueryParameter(_serializers, offset, const FullType(int)),
     };
 
     final _response = await _dio.request<Object>(
@@ -137,12 +133,11 @@ class UserApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(BuiltList, [FullType(Comment)]),
-            ) as BuiltList<Comment>;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(BuiltList, [FullType(Comment)]),
+      ) as BuiltList<Comment>;
+
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -166,7 +161,7 @@ class UserApi {
   }
 
   /// Get posts by user ID.
-  ///
+  /// 
   ///
   /// Parameters:
   /// * [id] - ID of user
@@ -180,7 +175,7 @@ class UserApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<UserIdPostsGet200ResponseInner>] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<BuiltList<UserIdPostsGet200ResponseInner>>> userIdPostsGet({
+  Future<Response<BuiltList<UserIdPostsGet200ResponseInner>>> userIdPostsGet({ 
     required int id,
     int? offset,
     CancelToken? cancelToken,
@@ -204,9 +199,7 @@ class UserApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (offset != null)
-        r'offset':
-            encodeQueryParameter(_serializers, offset, const FullType(int)),
+      if (offset != null) r'offset': encodeQueryParameter(_serializers, offset, const FullType(int)),
     };
 
     final _response = await _dio.request<Object>(
@@ -222,13 +215,11 @@ class UserApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(
-                  BuiltList, [FullType(UserIdPostsGet200ResponseInner)]),
-            ) as BuiltList<UserIdPostsGet200ResponseInner>;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(BuiltList, [FullType(UserIdPostsGet200ResponseInner)]),
+      ) as BuiltList<UserIdPostsGet200ResponseInner>;
+
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -252,7 +243,7 @@ class UserApi {
   }
 
   /// Get user notifications
-  ///
+  /// 
   ///
   /// Parameters:
   /// * [offset] - The number of items to skip
@@ -265,7 +256,7 @@ class UserApi {
   ///
   /// Returns a [Future]
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> userNotificationsGet({
+  Future<Response<void>> userNotificationsGet({ 
     int? offset,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -294,9 +285,7 @@ class UserApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (offset != null)
-        r'offset':
-            encodeQueryParameter(_serializers, offset, const FullType(int)),
+      if (offset != null) r'offset': encodeQueryParameter(_serializers, offset, const FullType(int)),
     };
 
     final _response = await _dio.request<Object>(
@@ -312,7 +301,7 @@ class UserApi {
   }
 
   /// Get the number of user notifications
-  ///
+  /// 
   ///
   /// Parameters:
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -324,7 +313,7 @@ class UserApi {
   ///
   /// Returns a [Future]
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> userNotificationsHead({
+  Future<Response<void>> userNotificationsHead({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -363,7 +352,7 @@ class UserApi {
   }
 
   /// Subscribe to a community or tag.
-  ///
+  /// 
   ///
   /// Parameters:
   /// * [communityId] - ID of community
@@ -377,7 +366,7 @@ class UserApi {
   ///
   /// Returns a [Future]
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> userSubscribePost({
+  Future<Response<void>> userSubscribePost({ 
     int? communityId,
     int? tagId,
     CancelToken? cancelToken,
@@ -411,16 +400,13 @@ class UserApi {
 
     try {
       _bodyData = <String, dynamic>{
-        if (communityId != null)
-          r'community_id': encodeQueryParameter(
-              _serializers, communityId, const FullType(int)),
-        if (tagId != null)
-          r'tag_id':
-              encodeQueryParameter(_serializers, tagId, const FullType(int)),
+        if (communityId != null) r'community_id': encodeQueryParameter(_serializers, communityId, const FullType(int)),
+        if (tagId != null) r'tag_id': encodeQueryParameter(_serializers, tagId, const FullType(int)),
       };
-    } catch (error, stackTrace) {
+
+    } catch(error, stackTrace) {
       throw DioError(
-        requestOptions: _options.compose(
+         requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -441,4 +427,5 @@ class UserApi {
 
     return _response;
   }
+
 }
