@@ -12,6 +12,8 @@ Method | HTTP request | Description
 [**commentsGet**](CommentsApi.md#commentsget) | **GET** /comments | Get comments
 [**commentsIdDelete**](CommentsApi.md#commentsiddelete) | **DELETE** /comments/{id} | Delete comment
 [**commentsIdPut**](CommentsApi.md#commentsidput) | **PUT** /comments/{id} | Update comment
+[**commentsIdReactDelete**](CommentsApi.md#commentsidreactdelete) | **DELETE** /comments/{id}/react | Remove reaction from comment
+[**commentsIdReactPost**](CommentsApi.md#commentsidreactpost) | **POST** /comments/{id}/react | Add reaction to comment
 [**commentsPost**](CommentsApi.md#commentspost) | **POST** /comments | Add comment
 
 
@@ -130,6 +132,100 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| ID of comment | 
  **text** | **String**| Comment text | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **commentsIdReactDelete**
+> commentsIdReactDelete(id, communityId, reactionType)
+
+Remove reaction from comment
+
+### Example
+```dart
+import 'package:tagmine_api_client/api.dart';
+// TODO Configure HTTP basic authorization: bearerAuth
+//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
+
+final api = TagmineApiClient().getCommentsApi();
+final int id = 789; // int | ID of content
+final String communityId = communityId_example; // String | ID of community
+final String reactionType = reactionType_example; // String | ID of reaction type
+
+try {
+    api.commentsIdReactDelete(id, communityId, reactionType);
+} catch on DioError (e) {
+    print('Exception when calling CommentsApi->commentsIdReactDelete: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| ID of content | 
+ **communityId** | **String**| ID of community | 
+ **reactionType** | **String**| ID of reaction type | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **commentsIdReactPost**
+> commentsIdReactPost(id, communityId, reactionType)
+
+Add reaction to comment
+
+### Example
+```dart
+import 'package:tagmine_api_client/api.dart';
+// TODO Configure HTTP basic authorization: bearerAuth
+//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
+
+final api = TagmineApiClient().getCommentsApi();
+final int id = 789; // int | ID of content
+final String communityId = communityId_example; // String | ID of community
+final String reactionType = reactionType_example; // String | ID of reaction type
+
+try {
+    api.commentsIdReactPost(id, communityId, reactionType);
+} catch on DioError (e) {
+    print('Exception when calling CommentsApi->commentsIdReactPost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| ID of content | 
+ **communityId** | **String**| ID of community | 
+ **reactionType** | **String**| ID of reaction type | 
 
 ### Return type
 

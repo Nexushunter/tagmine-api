@@ -74,6 +74,8 @@ Class | Method | HTTP request | Description
 [*CommentsApi*](doc/CommentsApi.md) | [**commentsGet**](doc/CommentsApi.md#commentsget) | **GET** /comments | Get comments
 [*CommentsApi*](doc/CommentsApi.md) | [**commentsIdDelete**](doc/CommentsApi.md#commentsiddelete) | **DELETE** /comments/{id} | Delete comment
 [*CommentsApi*](doc/CommentsApi.md) | [**commentsIdPut**](doc/CommentsApi.md#commentsidput) | **PUT** /comments/{id} | Update comment
+[*CommentsApi*](doc/CommentsApi.md) | [**commentsIdReactDelete**](doc/CommentsApi.md#commentsidreactdelete) | **DELETE** /comments/{id}/react | Remove reaction from comment
+[*CommentsApi*](doc/CommentsApi.md) | [**commentsIdReactPost**](doc/CommentsApi.md#commentsidreactpost) | **POST** /comments/{id}/react | Add reaction to comment
 [*CommentsApi*](doc/CommentsApi.md) | [**commentsPost**](doc/CommentsApi.md#commentspost) | **POST** /comments | Add comment
 [*CommunityApi*](doc/CommunityApi.md) | [**communityGet**](doc/CommunityApi.md#communityget) | **GET** /community | Get communities
 [*CommunityApi*](doc/CommunityApi.md) | [**communityIdDelete**](doc/CommunityApi.md#communityiddelete) | **DELETE** /community/{id} | Delete community
