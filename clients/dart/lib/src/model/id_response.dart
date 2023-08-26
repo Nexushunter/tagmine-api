@@ -54,9 +54,7 @@ class _$IdResponseSerializer implements PrimitiveSerializer<IdResponse> {
     IdResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
   }
 
   void _deserializeProperties(
@@ -106,3 +104,4 @@ class _$IdResponseSerializer implements PrimitiveSerializer<IdResponse> {
     return result.build();
   }
 }
+
