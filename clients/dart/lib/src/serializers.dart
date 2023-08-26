@@ -19,7 +19,7 @@ import 'package:tagmine_api_client/src/model/community.dart';
 import 'package:tagmine_api_client/src/model/content.dart';
 import 'package:tagmine_api_client/src/model/id_response.dart';
 import 'package:tagmine_api_client/src/model/tag.dart';
-import 'package:tagmine_api_client/src/model/user_id_posts_get200_response_inner.dart';
+import 'package:tagmine_api_client/src/model/user_posts_inner.dart';
 
 part 'serializers.g.dart';
 
@@ -29,7 +29,7 @@ part 'serializers.g.dart';
   Content,
   IdResponse,
   Tag,
-  UserIdPostsGet200ResponseInner,
+  UserPostsInner,
 ])
 Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
@@ -49,12 +49,12 @@ Serializers serializers = (_$serializers.toBuilder()
         () => ListBuilder<Tag>(),
       )
       ..addBuilderFactory(
-        const FullType(BuiltList, [FullType(UserIdPostsGet200ResponseInner)]),
-        () => ListBuilder<UserIdPostsGet200ResponseInner>(),
-      )
-      ..addBuilderFactory(
         const FullType(BuiltList, [FullType(Content)]),
         () => ListBuilder<Content>(),
+      )
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(UserPostsInner)]),
+        () => ListBuilder<UserPostsInner>(),
       )
       ..add(const OneOfSerializer())
       ..add(const AnyOfSerializer())

@@ -14,13 +14,13 @@ part 'content.g.dart';
 /// Content Entry
 ///
 /// Properties:
-/// * [id] 
-/// * [title] 
-/// * [url] 
-/// * [userId] 
-/// * [username] 
-/// * [communities] 
-/// * [tags] 
+/// * [id]
+/// * [title]
+/// * [url]
+/// * [userId]
+/// * [username]
+/// * [communities]
+/// * [tags]
 @BuiltValue()
 abstract class Content implements Built<Content, ContentBuilder> {
   @BuiltValueField(wireName: r'id')
@@ -112,7 +112,9 @@ class _$ContentSerializer implements PrimitiveSerializer<Content> {
     Content object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -204,4 +206,3 @@ class _$ContentSerializer implements PrimitiveSerializer<Content> {
     return result.build();
   }
 }
-

@@ -1,13 +1,7 @@
-.PHONY: gen clean fmt validate
+.PHONY: gen fmt validate
 
-gen: clean
+gen:
 	dart run build_runner build --delete-conflicting-outputs
-
-## Work around the generator not running when there are changes to the OpenAPI spec.
-clean:
-	rm -rf .dart_tool
-	dart pub get
-
 fmt:
 	dart format ./
 	terraform -chdir=infrastructure fmt

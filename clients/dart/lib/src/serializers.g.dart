@@ -12,7 +12,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Content.serializer)
       ..add(IdResponse.serializer)
       ..add(Tag.serializer)
-      ..add(UserIdPostsGet200ResponseInner.serializer)
+      ..add(UserPostsInner.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Community)]),
           () => new ListBuilder<Community>())

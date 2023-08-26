@@ -10,7 +10,6 @@ import 'package:dio/dio.dart';
 import 'package:tagmine_api_client/src/api_util.dart';
 
 class MetadataApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -18,7 +17,7 @@ class MetadataApi {
   const MetadataApi(this._dio, this._serializers);
 
   /// Get title/thumbnail from URL
-  /// 
+  ///
   ///
   /// Parameters:
   /// * [url] - URL of link
@@ -31,7 +30,7 @@ class MetadataApi {
   ///
   /// Returns a [Future]
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> urlMetadataGet({ 
+  Future<Response<void>> urlMetadataGet({
     required String url,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -74,5 +73,4 @@ class MetadataApi {
 
     return _response;
   }
-
 }

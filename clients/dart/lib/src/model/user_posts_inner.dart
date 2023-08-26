@@ -12,9 +12,9 @@ import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:one_of/any_of.dart';
 
-part 'user_id_posts_get200_response_inner.g.dart';
+part 'user_posts_inner.g.dart';
 
-/// UserIdPostsGet200ResponseInner
+/// UserPostsInner
 ///
 /// Properties:
 /// * [id]
@@ -29,48 +29,42 @@ part 'user_id_posts_get200_response_inner.g.dart';
 /// * [tags]
 /// * [parentId]
 @BuiltValue()
-abstract class UserIdPostsGet200ResponseInner
-    implements
-        Built<UserIdPostsGet200ResponseInner,
-            UserIdPostsGet200ResponseInnerBuilder> {
+abstract class UserPostsInner
+    implements Built<UserPostsInner, UserPostsInnerBuilder> {
   /// Any Of [Comment], [Content]
   AnyOf get anyOf;
 
-  UserIdPostsGet200ResponseInner._();
+  UserPostsInner._();
 
-  factory UserIdPostsGet200ResponseInner(
-          [void updates(UserIdPostsGet200ResponseInnerBuilder b)]) =
-      _$UserIdPostsGet200ResponseInner;
+  factory UserPostsInner([void updates(UserPostsInnerBuilder b)]) =
+      _$UserPostsInner;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(UserIdPostsGet200ResponseInnerBuilder b) => b;
+  static void _defaults(UserPostsInnerBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UserIdPostsGet200ResponseInner> get serializer =>
-      _$UserIdPostsGet200ResponseInnerSerializer();
+  static Serializer<UserPostsInner> get serializer =>
+      _$UserPostsInnerSerializer();
 }
 
-class _$UserIdPostsGet200ResponseInnerSerializer
-    implements PrimitiveSerializer<UserIdPostsGet200ResponseInner> {
+class _$UserPostsInnerSerializer
+    implements PrimitiveSerializer<UserPostsInner> {
   @override
-  final Iterable<Type> types = const [
-    UserIdPostsGet200ResponseInner,
-    _$UserIdPostsGet200ResponseInner
-  ];
+  final Iterable<Type> types = const [UserPostsInner, _$UserPostsInner];
 
   @override
-  final String wireName = r'UserIdPostsGet200ResponseInner';
+  final String wireName = r'UserPostsInner';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    UserIdPostsGet200ResponseInner object, {
+    UserPostsInner object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {}
 
   @override
   Object serialize(
     Serializers serializers,
-    UserIdPostsGet200ResponseInner object, {
+    UserPostsInner object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     final anyOf = object.anyOf;
@@ -80,12 +74,12 @@ class _$UserIdPostsGet200ResponseInnerSerializer
   }
 
   @override
-  UserIdPostsGet200ResponseInner deserialize(
+  UserPostsInner deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = UserIdPostsGet200ResponseInnerBuilder();
+    final result = UserPostsInnerBuilder();
     Object? anyOfDataSrc;
     final targetType = const FullType(AnyOf, [
       FullType(Content),
