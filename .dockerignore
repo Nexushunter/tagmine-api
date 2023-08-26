@@ -1,5 +1,4 @@
 .dart_tool
-!.dart_tool/openapi-generator-cache.json
 .github
 infrastructure
 scripts
