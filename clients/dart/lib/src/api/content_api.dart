@@ -398,20 +398,35 @@ class ContentApi {
         ],
         ...?extra,
       },
+      contentType: 'application/x-www-form-urlencoded',
       validateStatus: validateStatus,
     );
 
-    final _queryParameters = <String, dynamic>{
-      r'community_id': encodeQueryParameter(
-          _serializers, communityId, const FullType(String)),
-      r'reaction_type': encodeQueryParameter(
-          _serializers, reactionType, const FullType(String)),
-    };
+    dynamic _bodyData;
+
+    try {
+      _bodyData = <String, dynamic>{
+        r'community_id': encodeQueryParameter(
+            _serializers, communityId, const FullType(String)),
+        r'reaction_type': encodeQueryParameter(
+            _serializers, reactionType, const FullType(String)),
+      };
+    } catch (error, stackTrace) {
+      throw DioError(
+        requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioErrorType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
 
     final _response = await _dio.request<Object>(
       _path,
+      data: _bodyData,
       options: _options,
-      queryParameters: _queryParameters,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
