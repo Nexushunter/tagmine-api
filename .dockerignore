@@ -1,0 +1,9 @@
+.dart_tool
+.github
+infrastructure
+scripts
+LICENSE
+README.md
+CHANGELOG.md
+docker-compose.yaml
+!scripts/build_oas_docker.sh
