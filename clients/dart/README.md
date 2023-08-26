@@ -74,6 +74,8 @@ Class | Method | HTTP request | Description
 [*CommentsApi*](doc/CommentsApi.md) | [**commentsGet**](doc/CommentsApi.md#commentsget) | **GET** /comments | Get comments
 [*CommentsApi*](doc/CommentsApi.md) | [**commentsIdDelete**](doc/CommentsApi.md#commentsiddelete) | **DELETE** /comments/{id} | Delete comment
 [*CommentsApi*](doc/CommentsApi.md) | [**commentsIdPut**](doc/CommentsApi.md#commentsidput) | **PUT** /comments/{id} | Update comment
+[*CommentsApi*](doc/CommentsApi.md) | [**commentsIdReactDelete**](doc/CommentsApi.md#commentsidreactdelete) | **DELETE** /comments/{id}/react | Remove reaction from comment
+[*CommentsApi*](doc/CommentsApi.md) | [**commentsIdReactPost**](doc/CommentsApi.md#commentsidreactpost) | **POST** /comments/{id}/react | Add reaction to comment
 [*CommentsApi*](doc/CommentsApi.md) | [**commentsPost**](doc/CommentsApi.md#commentspost) | **POST** /comments | Add comment
 [*CommunityApi*](doc/CommunityApi.md) | [**communityGet**](doc/CommunityApi.md#communityget) | **GET** /community | Get communities
 [*CommunityApi*](doc/CommunityApi.md) | [**communityIdDelete**](doc/CommunityApi.md#communityiddelete) | **DELETE** /community/{id} | Delete community
@@ -84,6 +86,8 @@ Class | Method | HTTP request | Description
 [*ContentApi*](doc/ContentApi.md) | [**contentIdDelete**](doc/ContentApi.md#contentiddelete) | **DELETE** /content/{id} | Delete content
 [*ContentApi*](doc/ContentApi.md) | [**contentIdGet**](doc/ContentApi.md#contentidget) | **GET** /content/{id} | Get content by ID
 [*ContentApi*](doc/ContentApi.md) | [**contentIdPut**](doc/ContentApi.md#contentidput) | **PUT** /content/{id} | Update content
+[*ContentApi*](doc/ContentApi.md) | [**contentIdReactDelete**](doc/ContentApi.md#contentidreactdelete) | **DELETE** /content/{id}/react | Remove reaction from content
+[*ContentApi*](doc/ContentApi.md) | [**contentIdReactPost**](doc/ContentApi.md#contentidreactpost) | **POST** /content/{id}/react | Add reaction to content
 [*ContentApi*](doc/ContentApi.md) | [**contentPost**](doc/ContentApi.md#contentpost) | **POST** /content | Add content
 [*MetadataApi*](doc/MetadataApi.md) | [**urlMetadataGet**](doc/MetadataApi.md#urlmetadataget) | **GET** /url_metadata | Get title/thumbnail from URL
 [*TagsApi*](doc/TagsApi.md) | [**tagGet**](doc/TagsApi.md#tagget) | **GET** /tag | Get tags

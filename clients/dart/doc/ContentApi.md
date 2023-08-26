@@ -13,6 +13,8 @@ Method | HTTP request | Description
 [**contentIdDelete**](ContentApi.md#contentiddelete) | **DELETE** /content/{id} | Delete content
 [**contentIdGet**](ContentApi.md#contentidget) | **GET** /content/{id} | Get content by ID
 [**contentIdPut**](ContentApi.md#contentidput) | **PUT** /content/{id} | Update content
+[**contentIdReactDelete**](ContentApi.md#contentidreactdelete) | **DELETE** /content/{id}/react | Remove reaction from content
+[**contentIdReactPost**](ContentApi.md#contentidreactpost) | **POST** /content/{id}/react | Add reaction to content
 [**contentPost**](ContentApi.md#contentpost) | **POST** /content | Add content
 
 
@@ -182,6 +184,100 @@ Name | Type | Description  | Notes
  **removedCommunity** | [**BuiltList&lt;int&gt;**](int.md)| One or more removed community IDs | [optional] 
  **addedTags** | [**BuiltList&lt;int&gt;**](int.md)| One or more added tag IDs | [optional] 
  **addedCommunity** | [**BuiltList&lt;int&gt;**](int.md)| One or more added community IDs | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **contentIdReactDelete**
+> contentIdReactDelete(id, communityId, reactionType)
+
+Remove reaction from content
+
+### Example
+```dart
+import 'package:tagmine_api_client/api.dart';
+// TODO Configure HTTP basic authorization: bearerAuth
+//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
+
+final api = TagmineApiClient().getContentApi();
+final int id = 789; // int | ID of content
+final String communityId = communityId_example; // String | ID of community
+final String reactionType = reactionType_example; // String | ID of reaction type
+
+try {
+    api.contentIdReactDelete(id, communityId, reactionType);
+} catch on DioError (e) {
+    print('Exception when calling ContentApi->contentIdReactDelete: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| ID of content | 
+ **communityId** | **String**| ID of community | 
+ **reactionType** | **String**| ID of reaction type | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **contentIdReactPost**
+> contentIdReactPost(id, communityId, reactionType)
+
+Add reaction to content
+
+### Example
+```dart
+import 'package:tagmine_api_client/api.dart';
+// TODO Configure HTTP basic authorization: bearerAuth
+//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
+
+final api = TagmineApiClient().getContentApi();
+final int id = 789; // int | ID of content
+final String communityId = communityId_example; // String | ID of community
+final String reactionType = reactionType_example; // String | ID of reaction type
+
+try {
+    api.contentIdReactPost(id, communityId, reactionType);
+} catch on DioError (e) {
+    print('Exception when calling ContentApi->contentIdReactPost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| ID of content | 
+ **communityId** | **String**| ID of community | 
+ **reactionType** | **String**| ID of reaction type | 
 
 ### Return type
 

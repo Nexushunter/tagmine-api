@@ -294,6 +294,73 @@ paths:
       responses:
         "200":
           description: Successful operation
+  /content/{id}/react:
+    post:
+      tags:
+        - content      
+      security:
+        - bearerAuth: []
+      summary: Add reaction to content
+      parameters:
+        - name: id
+          in: path
+          description: ID of content
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                community_id:
+                  description: ID of community
+                  type: string
+                reaction_type:
+                  description: ID of reaction type
+                  type: string
+                  enum: [1]
+              required:
+                - community_id
+                - reaction_type
+      responses:
+        '200':
+          description: Successful operation
+    delete:
+      tags:
+        - content      
+      security:
+        - bearerAuth: []
+      summary: Remove reaction from content
+      parameters:
+        - name: id
+          in: path
+          description: ID of content
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                community_id:
+                  description: ID of community
+                  type: string
+                reaction_type:
+                  description: ID of reaction type
+                  type: string
+                  enum: [1]
+              required:
+                - community_id
+                - reaction_type
+      responses:
+        '200':
+          description: Successful operation
   /tag:
     get:
       tags:
@@ -596,6 +663,73 @@ paths:
             format: int64
       responses:
         "200":
+          description: Successful operation
+  /comments/{id}/react:
+    post:
+      tags:
+        - comments      
+      security:
+        - bearerAuth: []
+      summary: Add reaction to comment
+      parameters:
+        - name: id
+          in: path
+          description: ID of content
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                community_id:
+                  description: ID of community
+                  type: string
+                reaction_type:
+                  description: ID of reaction type
+                  type: string
+                  enum: [1]
+              required:
+                - community_id
+                - reaction_type
+      responses:
+        '200':
+          description: Successful operation
+    delete:
+      tags:
+        - comments      
+      security:
+        - bearerAuth: []
+      summary: Remove reaction from comment
+      parameters:
+        - name: id
+          in: path
+          description: ID of content
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                community_id:
+                  description: ID of community
+                  type: string
+                reaction_type:
+                  description: ID of reaction type
+                  type: string
+                  enum: [1]
+              required:
+                - community_id
+                - reaction_type
+      responses:
+        '200':
           description: Successful operation
   /auth/register:
     post:
