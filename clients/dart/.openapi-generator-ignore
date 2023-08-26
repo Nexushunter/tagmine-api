@@ -23,3 +23,4 @@
 #!docs/README.md
 test/**
 analysis_options.yaml
+dart_build.txt
