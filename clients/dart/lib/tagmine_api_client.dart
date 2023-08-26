@@ -22,4 +22,4 @@ export 'package:tagmine_api_client/src/model/community.dart';
 export 'package:tagmine_api_client/src/model/content.dart';
 export 'package:tagmine_api_client/src/model/id_response.dart';
 export 'package:tagmine_api_client/src/model/tag.dart';
-export 'package:tagmine_api_client/src/model/user_id_posts_get200_response_inner.dart';
+export 'package:tagmine_api_client/src/model/user_posts_inner.dart';

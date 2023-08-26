@@ -110,6 +110,12 @@ components:
         - user_id
         - username
         - communities
+    userPosts:
+      type: array
+      items:
+        anyOf:
+          - $ref: '#/components/schemas/content'
+          - $ref: '#/components/schemas/comment'
   securitySchemes:
     bearerAuth:
       type: http
@@ -121,7 +127,7 @@ paths:
       tags:
         - metadata
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       summary: Get title/thumbnail from URL
       parameters:
         - name: url
@@ -175,7 +181,7 @@ paths:
       tags:
         - content
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       summary: Add content
       requestBody:
         content:
@@ -238,7 +244,7 @@ paths:
       tags:
         - content
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       summary: Update content
       parameters:
         - name: id
@@ -281,7 +287,7 @@ paths:
       tags:
         - content
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       summary: Delete content
       parameters:
         - name: id
@@ -297,9 +303,9 @@ paths:
   /content/{id}/react:
     post:
       tags:
-        - content      
+        - content
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       summary: Add reaction to content
       parameters:
         - name: id
@@ -321,7 +327,7 @@ paths:
                 reaction_type:
                   description: ID of reaction type
                   type: string
-                  enum: [1]
+                  enum: [ 1 ]
               required:
                 - community_id
                 - reaction_type
@@ -330,9 +336,9 @@ paths:
           description: Successful operation
     delete:
       tags:
-        - content      
+        - content
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       summary: Remove reaction from content
       parameters:
         - name: id
@@ -354,7 +360,7 @@ paths:
                 reaction_type:
                   description: ID of reaction type
                   type: string
-                  enum: [1]
+                  enum: [ 1 ]
               required:
                 - community_id
                 - reaction_type
@@ -385,7 +391,7 @@ paths:
       tags:
         - tags
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       summary: Add tag
       requestBody:
         content:
@@ -429,7 +435,7 @@ paths:
       tags:
         - tags
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       summary: Delete tag
       parameters:
         - name: id
@@ -466,7 +472,7 @@ paths:
       tags:
         - community
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       summary: Add community
       requestBody:
         content:
@@ -514,7 +520,7 @@ paths:
       tags:
         - community
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       summary: Update community
       parameters:
         - name: id
@@ -542,7 +548,7 @@ paths:
       tags:
         - community
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       summary: Delete community
       parameters:
         - name: id
@@ -587,7 +593,7 @@ paths:
       tags:
         - comments
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       summary: Add comment
       requestBody:
         content:
@@ -623,7 +629,7 @@ paths:
       tags:
         - comments
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       summary: Update comment
       parameters:
         - name: id
@@ -651,7 +657,7 @@ paths:
       tags:
         - comments
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       summary: Delete comment
       parameters:
         - name: id
@@ -667,9 +673,9 @@ paths:
   /comments/{id}/react:
     post:
       tags:
-        - comments      
+        - comments
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       summary: Add reaction to comment
       parameters:
         - name: id
@@ -691,7 +697,7 @@ paths:
                 reaction_type:
                   description: ID of reaction type
                   type: string
-                  enum: [1]
+                  enum: [ 1 ]
               required:
                 - community_id
                 - reaction_type
@@ -700,9 +706,9 @@ paths:
           description: Successful operation
     delete:
       tags:
-        - comments      
+        - comments
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       summary: Remove reaction from comment
       parameters:
         - name: id
@@ -724,7 +730,7 @@ paths:
                 reaction_type:
                   description: ID of reaction type
                   type: string
-                  enum: [1]
+                  enum: [ 1 ]
               required:
                 - community_id
                 - reaction_type
@@ -830,7 +836,7 @@ paths:
       tags:
         - user
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       summary: Subscribe to a community or tag.
       requestBody:
         content:
@@ -852,7 +858,7 @@ paths:
       tags:
         - user
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       summary: Retrieve posts from subscribed to tags and communities.
       parameters:
         - name: offset
@@ -870,7 +876,7 @@ paths:
         - user
       summary: Get the number of user notifications
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       responses:
         "200":
           description: Successful operation
@@ -884,7 +890,7 @@ paths:
         - user
       summary: Get user notifications
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       parameters:
         - name: offset
           in: query
@@ -920,11 +926,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  anyOf:
-                    - $ref: '#/components/schemas/content'
-                    - $ref: '#/components/schemas/comment'
+                $ref: '#/components/schemas/userPosts'
   /user/{id}/comments:
     get:
       tags:

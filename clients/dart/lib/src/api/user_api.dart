@@ -10,7 +10,7 @@ import 'package:dio/dio.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:tagmine_api_client/src/api_util.dart';
 import 'package:tagmine_api_client/src/model/comment.dart';
-import 'package:tagmine_api_client/src/model/user_id_posts_get200_response_inner.dart';
+import 'package:tagmine_api_client/src/model/user_posts_inner.dart';
 
 class UserApi {
   final Dio _dio;
@@ -178,9 +178,9 @@ class UserApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BuiltList<UserIdPostsGet200ResponseInner>] as data
+  /// Returns a [Future] containing a [Response] with a [BuiltList<UserPostsInner>] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<BuiltList<UserIdPostsGet200ResponseInner>>> userIdPostsGet({
+  Future<Response<BuiltList<UserPostsInner>>> userIdPostsGet({
     required int id,
     int? offset,
     CancelToken? cancelToken,
@@ -218,7 +218,7 @@ class UserApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<UserIdPostsGet200ResponseInner>? _responseData;
+    BuiltList<UserPostsInner>? _responseData;
 
     try {
       final rawResponse = _response.data;
@@ -226,9 +226,9 @@ class UserApi {
           ? null
           : _serializers.deserialize(
               rawResponse,
-              specifiedType: const FullType(
-                  BuiltList, [FullType(UserIdPostsGet200ResponseInner)]),
-            ) as BuiltList<UserIdPostsGet200ResponseInner>;
+              specifiedType:
+                  const FullType(BuiltList, [FullType(UserPostsInner)]),
+            ) as BuiltList<UserPostsInner>;
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -239,7 +239,7 @@ class UserApi {
       );
     }
 
-    return Response<BuiltList<UserIdPostsGet200ResponseInner>>(
+    return Response<BuiltList<UserPostsInner>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

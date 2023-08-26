@@ -12,7 +12,7 @@ doc/MetadataApi.md
 doc/Tag.md
 doc/TagsApi.md
 doc/UserApi.md
-doc/UserIdPostsGet200ResponseInner.md
+doc/UserPostsInner.md
 lib/src/api.dart
 lib/src/api/auth_api.dart
 lib/src/api/comments_api.dart
@@ -34,7 +34,7 @@ lib/src/model/content.dart
 lib/src/model/date.dart
 lib/src/model/id_response.dart
 lib/src/model/tag.dart
-lib/src/model/user_id_posts_get200_response_inner.dart
+lib/src/model/user_posts_inner.dart
 lib/src/serializers.dart
 lib/tagmine_api_client.dart
 pubspec.yaml

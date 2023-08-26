@@ -104,7 +104,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **userIdPostsGet**
-> BuiltList<UserIdPostsGet200ResponseInner> userIdPostsGet(id, offset)
+> BuiltList<UserPostsInner> userIdPostsGet(id, offset)
 
 Get posts by user ID.
 
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BuiltList&lt;UserIdPostsGet200ResponseInner&gt;**](UserIdPostsGet200ResponseInner.md)
+[**BuiltList&lt;UserPostsInner&gt;**](UserPostsInner.md)
 
 ### Authorization
 

@@ -109,7 +109,7 @@ Class | Method | HTTP request | Description
  - [Content](doc/Content.md)
  - [IdResponse](doc/IdResponse.md)
  - [Tag](doc/Tag.md)
- - [UserIdPostsGet200ResponseInner](doc/UserIdPostsGet200ResponseInner.md)
+ - [UserPostsInner](doc/UserPostsInner.md)
 
 
 ## Documentation For Authorization
