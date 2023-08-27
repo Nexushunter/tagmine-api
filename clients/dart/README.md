@@ -109,6 +109,7 @@ Class | Method | HTTP request | Description
  - [Content](doc/Content.md)
  - [IdResponse](doc/IdResponse.md)
  - [Tag](doc/Tag.md)
+ - [UrlMetadata](doc/UrlMetadata.md)
  - [UserPostsInner](doc/UserPostsInner.md)
 
 

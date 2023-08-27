@@ -8,8 +8,10 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:tagmine_api_client/src/api_util.dart';
+import 'package:tagmine_api_client/src/model/url_metadata.dart';
 
 class MetadataApi {
+
   final Dio _dio;
 
   final Serializers _serializers;
@@ -17,7 +19,7 @@ class MetadataApi {
   const MetadataApi(this._dio, this._serializers);
 
   /// Get title/thumbnail from URL
-  ///
+  /// 
   ///
   /// Parameters:
   /// * [url] - URL of link
@@ -28,9 +30,9 @@ class MetadataApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future]
+  /// Returns a [Future] containing a [Response] with a [UrlMetadata] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> urlMetadataGet({
+  Future<Response<UrlMetadata>> urlMetadataGet({ 
     required String url,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -71,6 +73,35 @@ class MetadataApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    return _response;
+    UrlMetadata? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(UrlMetadata),
+      ) as UrlMetadata;
+
+    } catch (error, stackTrace) {
+      throw DioError(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioErrorType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<UrlMetadata>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
   }
+
 }

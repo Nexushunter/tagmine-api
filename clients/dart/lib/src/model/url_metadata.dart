@@ -6,52 +6,62 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'id_response.g.dart';
+part 'url_metadata.g.dart';
 
-/// Response Containing an ID
+/// UrlMetadata
 ///
 /// Properties:
-/// * [id] - ID of newly created entity
+/// * [title] 
+/// * [image] 
 @BuiltValue()
-abstract class IdResponse implements Built<IdResponse, IdResponseBuilder> {
-  /// ID of newly created entity
-  @BuiltValueField(wireName: r'id')
-  int get id;
+abstract class UrlMetadata implements Built<UrlMetadata, UrlMetadataBuilder> {
+  @BuiltValueField(wireName: r'title')
+  String get title;
 
-  IdResponse._();
+  @BuiltValueField(wireName: r'image')
+  String? get image;
 
-  factory IdResponse([void updates(IdResponseBuilder b)]) = _$IdResponse;
+  UrlMetadata._();
+
+  factory UrlMetadata([void updates(UrlMetadataBuilder b)]) = _$UrlMetadata;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(IdResponseBuilder b) => b;
+  static void _defaults(UrlMetadataBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<IdResponse> get serializer => _$IdResponseSerializer();
+  static Serializer<UrlMetadata> get serializer => _$UrlMetadataSerializer();
 }
 
-class _$IdResponseSerializer implements PrimitiveSerializer<IdResponse> {
+class _$UrlMetadataSerializer implements PrimitiveSerializer<UrlMetadata> {
   @override
-  final Iterable<Type> types = const [IdResponse, _$IdResponse];
+  final Iterable<Type> types = const [UrlMetadata, _$UrlMetadata];
 
   @override
-  final String wireName = r'IdResponse';
+  final String wireName = r'UrlMetadata';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    IdResponse object, {
+    UrlMetadata object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'id';
+    yield r'title';
     yield serializers.serialize(
-      object.id,
-      specifiedType: const FullType(int),
+      object.title,
+      specifiedType: const FullType(String),
     );
+    if (object.image != null) {
+      yield r'image';
+      yield serializers.serialize(
+        object.image,
+        specifiedType: const FullType(String),
+      );
+    }
   }
 
   @override
   Object serialize(
     Serializers serializers,
-    IdResponse object, {
+    UrlMetadata object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
@@ -62,19 +72,26 @@ class _$IdResponseSerializer implements PrimitiveSerializer<IdResponse> {
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required IdResponseBuilder result,
+    required UrlMetadataBuilder result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'id':
+        case r'title':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.id = valueDes;
+            specifiedType: const FullType(String),
+          ) as String;
+          result.title = valueDes;
+          break;
+        case r'image':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.image = valueDes;
           break;
         default:
           unhandled.add(key);
@@ -85,12 +102,12 @@ class _$IdResponseSerializer implements PrimitiveSerializer<IdResponse> {
   }
 
   @override
-  IdResponse deserialize(
+  UrlMetadata deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = IdResponseBuilder();
+    final result = UrlMetadataBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

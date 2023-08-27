@@ -22,4 +22,5 @@ export 'package:tagmine_api_client/src/model/community.dart';
 export 'package:tagmine_api_client/src/model/content.dart';
 export 'package:tagmine_api_client/src/model/id_response.dart';
 export 'package:tagmine_api_client/src/model/tag.dart';
+export 'package:tagmine_api_client/src/model/url_metadata.dart';
 export 'package:tagmine_api_client/src/model/user_posts_inner.dart';

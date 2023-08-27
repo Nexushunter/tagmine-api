@@ -11,6 +11,7 @@ import 'package:tagmine_api_client/src/api_util.dart';
 import 'package:tagmine_api_client/src/model/id_response.dart';
 
 class AuthApi {
+
   final Dio _dio;
 
   final Serializers _serializers;
@@ -18,7 +19,7 @@ class AuthApi {
   const AuthApi(this._dio, this._serializers);
 
   /// Forgot password
-  ///
+  /// 
   ///
   /// Parameters:
   /// * [email] - E-mail address of user
@@ -31,7 +32,7 @@ class AuthApi {
   ///
   /// Returns a [Future]
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> authForgotPasswordGet({
+  Future<Response<void>> authForgotPasswordGet({ 
     required String email,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -54,8 +55,7 @@ class AuthApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'email':
-          encodeQueryParameter(_serializers, email, const FullType(String)),
+      r'email': encodeQueryParameter(_serializers, email, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -71,7 +71,7 @@ class AuthApi {
   }
 
   /// Login to account
-  ///
+  /// 
   ///
   /// Parameters:
   /// * [username] - Username
@@ -85,7 +85,7 @@ class AuthApi {
   ///
   /// Returns a [Future] containing a [Response] with a [String] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<String>> authLoginPost({
+  Future<Response<String>> authLoginPost({ 
     required String username,
     required String password,
     CancelToken? cancelToken,
@@ -113,14 +113,13 @@ class AuthApi {
 
     try {
       _bodyData = <String, dynamic>{
-        r'username': encodeQueryParameter(
-            _serializers, username, const FullType(String)),
-        r'password': encodeQueryParameter(
-            _serializers, password, const FullType(String)),
+        r'username': encodeQueryParameter(_serializers, username, const FullType(String)),
+        r'password': encodeQueryParameter(_serializers, password, const FullType(String)),
       };
-    } catch (error, stackTrace) {
+
+    } catch(error, stackTrace) {
       throw DioError(
-        requestOptions: _options.compose(
+         requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -144,6 +143,7 @@ class AuthApi {
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : rawResponse as String;
+
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -167,7 +167,7 @@ class AuthApi {
   }
 
   /// Register new account
-  ///
+  /// 
   ///
   /// Parameters:
   /// * [username] - Username
@@ -182,7 +182,7 @@ class AuthApi {
   ///
   /// Returns a [Future] containing a [Response] with a [IdResponse] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<IdResponse>> authRegisterPost({
+  Future<Response<IdResponse>> authRegisterPost({ 
     required String username,
     required String email,
     required String password,
@@ -211,16 +211,14 @@ class AuthApi {
 
     try {
       _bodyData = <String, dynamic>{
-        r'username': encodeQueryParameter(
-            _serializers, username, const FullType(String)),
-        r'email':
-            encodeQueryParameter(_serializers, email, const FullType(String)),
-        r'password': encodeQueryParameter(
-            _serializers, password, const FullType(String)),
+        r'username': encodeQueryParameter(_serializers, username, const FullType(String)),
+        r'email': encodeQueryParameter(_serializers, email, const FullType(String)),
+        r'password': encodeQueryParameter(_serializers, password, const FullType(String)),
       };
-    } catch (error, stackTrace) {
+
+    } catch(error, stackTrace) {
       throw DioError(
-        requestOptions: _options.compose(
+         requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -243,12 +241,11 @@ class AuthApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(IdResponse),
-            ) as IdResponse;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(IdResponse),
+      ) as IdResponse;
+
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -272,7 +269,7 @@ class AuthApi {
   }
 
   /// Reset password
-  ///
+  /// 
   ///
   /// Parameters:
   /// * [token] - Token from forgot password
@@ -286,7 +283,7 @@ class AuthApi {
   ///
   /// Returns a [Future]
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> authResetPasswordGet({
+  Future<Response<void>> authResetPasswordGet({ 
     required String token,
     required String password,
     CancelToken? cancelToken,
@@ -310,10 +307,8 @@ class AuthApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'token':
-          encodeQueryParameter(_serializers, token, const FullType(String)),
-      r'password':
-          encodeQueryParameter(_serializers, password, const FullType(String)),
+      r'token': encodeQueryParameter(_serializers, token, const FullType(String)),
+      r'password': encodeQueryParameter(_serializers, password, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -327,4 +322,5 @@ class AuthApi {
 
     return _response;
   }
+
 }

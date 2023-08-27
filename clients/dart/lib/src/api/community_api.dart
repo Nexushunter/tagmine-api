@@ -13,6 +13,7 @@ import 'package:tagmine_api_client/src/model/community.dart';
 import 'package:tagmine_api_client/src/model/id_response.dart';
 
 class CommunityApi {
+
   final Dio _dio;
 
   final Serializers _serializers;
@@ -20,7 +21,7 @@ class CommunityApi {
   const CommunityApi(this._dio, this._serializers);
 
   /// Get communities
-  ///
+  /// 
   ///
   /// Parameters:
   /// * [text] - Text to search for
@@ -33,7 +34,7 @@ class CommunityApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<Community>] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<BuiltList<Community>>> communityGet({
+  Future<Response<BuiltList<Community>>> communityGet({ 
     String? text,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -56,9 +57,7 @@ class CommunityApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (text != null)
-        r'text':
-            encodeQueryParameter(_serializers, text, const FullType(String)),
+      if (text != null) r'text': encodeQueryParameter(_serializers, text, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -74,12 +73,11 @@ class CommunityApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(BuiltList, [FullType(Community)]),
-            ) as BuiltList<Community>;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(BuiltList, [FullType(Community)]),
+      ) as BuiltList<Community>;
+
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -103,7 +101,7 @@ class CommunityApi {
   }
 
   /// Delete community
-  ///
+  /// 
   ///
   /// Parameters:
   /// * [id] - ID of community
@@ -116,7 +114,7 @@ class CommunityApi {
   ///
   /// Returns a [Future]
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> communityIdDelete({
+  Future<Response<void>> communityIdDelete({ 
     required int id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -156,7 +154,7 @@ class CommunityApi {
   }
 
   /// Get community by ID
-  ///
+  /// 
   ///
   /// Parameters:
   /// * [id] - ID of community
@@ -169,7 +167,7 @@ class CommunityApi {
   ///
   /// Returns a [Future] containing a [Response] with a [Community] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<Community>> communityIdGet({
+  Future<Response<Community>> communityIdGet({ 
     required int id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -203,12 +201,11 @@ class CommunityApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(Community),
-            ) as Community;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(Community),
+      ) as Community;
+
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -232,7 +229,7 @@ class CommunityApi {
   }
 
   /// Update community
-  ///
+  /// 
   ///
   /// Parameters:
   /// * [id] - ID of community
@@ -246,7 +243,7 @@ class CommunityApi {
   ///
   /// Returns a [Future]
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> communityIdPut({
+  Future<Response<void>> communityIdPut({ 
     required int id,
     required String description,
     CancelToken? cancelToken,
@@ -280,12 +277,12 @@ class CommunityApi {
 
     try {
       _bodyData = <String, dynamic>{
-        r'description': encodeQueryParameter(
-            _serializers, description, const FullType(String)),
+        r'description': encodeQueryParameter(_serializers, description, const FullType(String)),
       };
-    } catch (error, stackTrace) {
+
+    } catch(error, stackTrace) {
       throw DioError(
-        requestOptions: _options.compose(
+         requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -308,7 +305,7 @@ class CommunityApi {
   }
 
   /// Add community
-  ///
+  /// 
   ///
   /// Parameters:
   /// * [name] - Name of community
@@ -322,7 +319,7 @@ class CommunityApi {
   ///
   /// Returns a [Future] containing a [Response] with a [IdResponse] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<IdResponse>> communityPost({
+  Future<Response<IdResponse>> communityPost({ 
     required String name,
     required String description,
     CancelToken? cancelToken,
@@ -356,14 +353,13 @@ class CommunityApi {
 
     try {
       _bodyData = <String, dynamic>{
-        r'name':
-            encodeQueryParameter(_serializers, name, const FullType(String)),
-        r'description': encodeQueryParameter(
-            _serializers, description, const FullType(String)),
+        r'name': encodeQueryParameter(_serializers, name, const FullType(String)),
+        r'description': encodeQueryParameter(_serializers, description, const FullType(String)),
       };
-    } catch (error, stackTrace) {
+
+    } catch(error, stackTrace) {
       throw DioError(
-        requestOptions: _options.compose(
+         requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -386,12 +382,11 @@ class CommunityApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(IdResponse),
-            ) as IdResponse;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(IdResponse),
+      ) as IdResponse;
+
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -413,4 +408,5 @@ class CommunityApi {
       extra: _response.extra,
     );
   }
+
 }

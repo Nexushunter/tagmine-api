@@ -11,10 +11,10 @@ part 'community.g.dart';
 /// A user community
 ///
 /// Properties:
-/// * [id]
-/// * [name]
-/// * [numComments]
-/// * [description]
+/// * [id] 
+/// * [name] 
+/// * [numComments] 
+/// * [description] 
 @BuiltValue()
 abstract class Community implements Built<Community, CommunityBuilder> {
   @BuiltValueField(wireName: r'id')
@@ -80,9 +80,7 @@ class _$CommunitySerializer implements PrimitiveSerializer<Community> {
     Community object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
   }
 
   void _deserializeProperties(
@@ -153,3 +151,4 @@ class _$CommunitySerializer implements PrimitiveSerializer<Community> {
     return result.build();
   }
 }
+
