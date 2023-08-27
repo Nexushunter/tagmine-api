@@ -17,34 +17,38 @@ part 'user_posts_inner.g.dart';
 /// UserPostsInner
 ///
 /// Properties:
-/// * [id] 
-/// * [title] 
-/// * [url] 
-/// * [userId] 
-/// * [username] 
-/// * [communities] 
-/// * [text] 
-/// * [communityId] 
-/// * [contentId] 
-/// * [tags] 
-/// * [parentId] 
+/// * [id]
+/// * [title]
+/// * [url]
+/// * [userId]
+/// * [username]
+/// * [communities]
+/// * [text]
+/// * [communityId]
+/// * [contentId]
+/// * [tags]
+/// * [parentId]
 @BuiltValue()
-abstract class UserPostsInner implements Built<UserPostsInner, UserPostsInnerBuilder> {
+abstract class UserPostsInner
+    implements Built<UserPostsInner, UserPostsInnerBuilder> {
   /// Any Of [Comment], [Content]
   AnyOf get anyOf;
 
   UserPostsInner._();
 
-  factory UserPostsInner([void updates(UserPostsInnerBuilder b)]) = _$UserPostsInner;
+  factory UserPostsInner([void updates(UserPostsInnerBuilder b)]) =
+      _$UserPostsInner;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UserPostsInnerBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UserPostsInner> get serializer => _$UserPostsInnerSerializer();
+  static Serializer<UserPostsInner> get serializer =>
+      _$UserPostsInnerSerializer();
 }
 
-class _$UserPostsInnerSerializer implements PrimitiveSerializer<UserPostsInner> {
+class _$UserPostsInnerSerializer
+    implements PrimitiveSerializer<UserPostsInner> {
   @override
   final Iterable<Type> types = const [UserPostsInner, _$UserPostsInner];
 
@@ -55,8 +59,7 @@ class _$UserPostsInnerSerializer implements PrimitiveSerializer<UserPostsInner> 
     Serializers serializers,
     UserPostsInner object, {
     FullType specifiedType = FullType.unspecified,
-  }) sync* {
-  }
+  }) sync* {}
 
   @override
   Object serialize(
@@ -65,7 +68,9 @@ class _$UserPostsInnerSerializer implements PrimitiveSerializer<UserPostsInner> 
     FullType specifiedType = FullType.unspecified,
   }) {
     final anyOf = object.anyOf;
-    return serializers.serialize(anyOf, specifiedType: FullType(AnyOf, anyOf.valueTypes.map((type) => FullType(type)).toList()))!;
+    return serializers.serialize(anyOf,
+        specifiedType: FullType(
+            AnyOf, anyOf.valueTypes.map((type) => FullType(type)).toList()))!;
   }
 
   @override
@@ -76,10 +81,13 @@ class _$UserPostsInnerSerializer implements PrimitiveSerializer<UserPostsInner> 
   }) {
     final result = UserPostsInnerBuilder();
     Object? anyOfDataSrc;
-    final targetType = const FullType(AnyOf, [FullType(Content), FullType(Comment), ]);
+    final targetType = const FullType(AnyOf, [
+      FullType(Content),
+      FullType(Comment),
+    ]);
     anyOfDataSrc = serialized;
-    result.anyOf = serializers.deserialize(anyOfDataSrc, specifiedType: targetType) as AnyOf;
+    result.anyOf = serializers.deserialize(anyOfDataSrc,
+        specifiedType: targetType) as AnyOf;
     return result.build();
   }
 }
-

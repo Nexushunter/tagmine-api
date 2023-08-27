@@ -11,8 +11,8 @@ part 'url_metadata.g.dart';
 /// UrlMetadata
 ///
 /// Properties:
-/// * [title] 
-/// * [image] 
+/// * [title]
+/// * [image]
 @BuiltValue()
 abstract class UrlMetadata implements Built<UrlMetadata, UrlMetadataBuilder> {
   @BuiltValueField(wireName: r'title')
@@ -64,7 +64,9 @@ class _$UrlMetadataSerializer implements PrimitiveSerializer<UrlMetadata> {
     UrlMetadata object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,4 +123,3 @@ class _$UrlMetadataSerializer implements PrimitiveSerializer<UrlMetadata> {
     return result.build();
   }
 }
-
