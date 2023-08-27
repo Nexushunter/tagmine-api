@@ -11,6 +11,7 @@ doc/IdResponse.md
 doc/MetadataApi.md
 doc/Tag.md
 doc/TagsApi.md
+doc/UrlMetadata.md
 doc/UserApi.md
 doc/UserPostsInner.md
 lib/src/api.dart
@@ -34,6 +35,7 @@ lib/src/model/content.dart
 lib/src/model/date.dart
 lib/src/model/id_response.dart
 lib/src/model/tag.dart
+lib/src/model/url_metadata.dart
 lib/src/model/user_posts_inner.dart
 lib/src/serializers.dart
 lib/tagmine_api_client.dart

@@ -19,6 +19,7 @@ import 'package:tagmine_api_client/src/model/community.dart';
 import 'package:tagmine_api_client/src/model/content.dart';
 import 'package:tagmine_api_client/src/model/id_response.dart';
 import 'package:tagmine_api_client/src/model/tag.dart';
+import 'package:tagmine_api_client/src/model/url_metadata.dart';
 import 'package:tagmine_api_client/src/model/user_posts_inner.dart';
 
 part 'serializers.g.dart';
@@ -29,6 +30,7 @@ part 'serializers.g.dart';
   Content,
   IdResponse,
   Tag,
+  UrlMetadata,
   UserPostsInner,
 ])
 Serializers serializers = (_$serializers.toBuilder()

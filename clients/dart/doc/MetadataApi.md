@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **urlMetadataGet**
-> urlMetadataGet(url)
+> UrlMetadata urlMetadataGet(url)
 
 Get title/thumbnail from URL
 
@@ -28,7 +28,8 @@ final api = TagmineApiClient().getMetadataApi();
 final String url = url_example; // String | URL of link
 
 try {
-    api.urlMetadataGet(url);
+    final response = api.urlMetadataGet(url);
+    print(response);
 } catch on DioError (e) {
     print('Exception when calling MetadataApi->urlMetadataGet: $e\n');
 }
@@ -42,7 +43,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**UrlMetadata**](UrlMetadata.md)
 
 ### Authorization
 
@@ -51,7 +52,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

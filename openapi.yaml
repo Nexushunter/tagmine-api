@@ -116,6 +116,15 @@ components:
         anyOf:
           - $ref: '#/components/schemas/content'
           - $ref: '#/components/schemas/comment'
+    url_metadata:
+      type: object
+      properties:
+        image:
+          type: string
+        title:
+          type: string
+      required:
+        - title
   securitySchemes:
     bearerAuth:
       type: http
@@ -139,6 +148,10 @@ paths:
       responses:
         "200":
           description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/url_metadata'
   /content:
     get:
       tags:
