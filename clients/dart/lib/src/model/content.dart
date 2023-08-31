@@ -33,7 +33,7 @@ abstract class Content implements Built<Content, ContentBuilder> {
   String get url;
 
   @BuiltValueField(wireName: r'user_id')
-  String get userId;
+  int get userId;
 
   @BuiltValueField(wireName: r'username')
   String get username;
@@ -85,7 +85,7 @@ class _$ContentSerializer implements PrimitiveSerializer<Content> {
     yield r'user_id';
     yield serializers.serialize(
       object.userId,
-      specifiedType: const FullType(String),
+      specifiedType: const FullType(int),
     );
     yield r'username';
     yield serializers.serialize(
@@ -153,8 +153,8 @@ class _$ContentSerializer implements PrimitiveSerializer<Content> {
         case r'user_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType(int),
+          ) as int;
           result.userId = valueDes;
           break;
         case r'username':
