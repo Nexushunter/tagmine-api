@@ -14,7 +14,7 @@ class _$Content extends Content {
   @override
   final String url;
   @override
-  final String userId;
+  final int userId;
   @override
   final String username;
   @override
@@ -106,9 +106,9 @@ class ContentBuilder implements Builder<Content, ContentBuilder> {
   String? get url => _$this._url;
   set url(String? url) => _$this._url = url;
 
-  String? _userId;
-  String? get userId => _$this._userId;
-  set userId(String? userId) => _$this._userId = userId;
+  int? _userId;
+  int? get userId => _$this._userId;
+  set userId(int? userId) => _$this._userId = userId;
 
   String? _username;
   String? get username => _$this._username;

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **id** | **int** |  | 
 **title** | **String** |  | 
 **url** | **String** |  | 
-**userId** | **String** |  | 
+**userId** | **int** |  | 
 **username** | **String** |  | 
 **communities** | [**BuiltList&lt;Community&gt;**](Community.md) |  | 
 **tags** | [**BuiltList&lt;Tag&gt;**](Tag.md) |  | [optional] 
