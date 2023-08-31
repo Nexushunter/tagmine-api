@@ -12,9 +12,9 @@ class _$Community extends Community {
   @override
   final String name;
   @override
-  final int numComments;
+  final int? numComments;
   @override
-  final String description;
+  final String? description;
 
   factory _$Community([void Function(CommunityBuilder)? updates]) =>
       (new CommunityBuilder()..update(updates))._build();
@@ -22,15 +22,11 @@ class _$Community extends Community {
   _$Community._(
       {required this.id,
       required this.name,
-      required this.numComments,
-      required this.description})
+      this.numComments,
+      this.description})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(id, r'Community', 'id');
     BuiltValueNullFieldError.checkNotNull(name, r'Community', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        numComments, r'Community', 'numComments');
-    BuiltValueNullFieldError.checkNotNull(
-        description, r'Community', 'description');
   }
 
   @override
@@ -127,10 +123,8 @@ class CommunityBuilder implements Builder<Community, CommunityBuilder> {
             id: BuiltValueNullFieldError.checkNotNull(id, r'Community', 'id'),
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'Community', 'name'),
-            numComments: BuiltValueNullFieldError.checkNotNull(
-                numComments, r'Community', 'numComments'),
-            description: BuiltValueNullFieldError.checkNotNull(
-                description, r'Community', 'description'));
+            numComments: numComments,
+            description: description);
     replace(_$result);
     return _$result;
   }

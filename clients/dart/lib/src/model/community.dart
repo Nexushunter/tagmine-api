@@ -24,10 +24,10 @@ abstract class Community implements Built<Community, CommunityBuilder> {
   String get name;
 
   @BuiltValueField(wireName: r'num_comments')
-  int get numComments;
+  int? get numComments;
 
   @BuiltValueField(wireName: r'description')
-  String get description;
+  String? get description;
 
   Community._();
 
@@ -62,16 +62,20 @@ class _$CommunitySerializer implements PrimitiveSerializer<Community> {
       object.name,
       specifiedType: const FullType(String),
     );
-    yield r'num_comments';
-    yield serializers.serialize(
-      object.numComments,
-      specifiedType: const FullType(int),
-    );
-    yield r'description';
-    yield serializers.serialize(
-      object.description,
-      specifiedType: const FullType(String),
-    );
+    if (object.numComments != null) {
+      yield r'num_comments';
+      yield serializers.serialize(
+        object.numComments,
+        specifiedType: const FullType(int),
+      );
+    }
+    if (object.description != null) {
+      yield r'description';
+      yield serializers.serialize(
+        object.description,
+        specifiedType: const FullType(String),
+      );
+    }
   }
 
   @override

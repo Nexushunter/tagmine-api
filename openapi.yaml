@@ -68,8 +68,6 @@ components:
       required:
         - id
         - name
-        - num_comments
-        - description
     tag:
       description: A content tag
       type: object
